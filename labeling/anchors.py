@@ -1,4 +1,5 @@
-import Dict, List
+# anchors.py
+from typing import Dict, List
 
 SEMANTIC_THRESHOLD = 0.35
 
@@ -142,7 +143,7 @@ CORPORATE_CLIMATE_ANCHORS = [
 ]
 
 # --- Build dictionary of string anchors (optional, keep for reference) ---
-ANCHOR_STRINGS: Dict[str, List[str]] = {
+ANCHORS: Dict[str, List[str]] = {
     "monetary_policy": MONETARY_ANCHORS,
     "inflation": INFLATION_ANCHORS,
     "economic_growth": ECONOMIC_GROWTH_ANCHORS,

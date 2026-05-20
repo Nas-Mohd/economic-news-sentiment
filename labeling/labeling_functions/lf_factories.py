@@ -5,7 +5,7 @@ from spacy.matcher import PhraseMatcher
 from sentence_transformers import util
 from snorkel.labeling import labeling_function
 from snorkel.labeling.lf.nlp import nlp_labeling_function
-from snorkel.preprocessing import preprocessor
+from snorkel.preprocess import preprocessor
 
 PRESENT = 1
 ABSENT = 0
