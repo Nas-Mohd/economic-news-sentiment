@@ -1,0 +1,5 @@
+/webscraping/.env
+
+# Ignore the .env file that contains sensitive information such as API keys and database credentials
+
+.DS_Store

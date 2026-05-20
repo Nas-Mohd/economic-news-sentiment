@@ -1,0 +1,274 @@
+{
+  "None": [
+  {
+  "article_id": 164,
+  "title": "Where experience meets academic excellence",
+  "sentence_idx": 14,
+  "text": "“I needed a university that was recognised, approved by the Higher Education Ministry, and built for working adults,” she recalls."
+  },
+  {
+  "article_id": 3,
+  "title": "ECB urges banks to brace quickly for AI-assisted cyberattacks",
+  "sentence_idx": 8,
+  "text": "(Reporting by Ludwig Burger and Reinhard Becker, Editing by Linda Pasquini)"
+  }
+  ],
+  "External_Sector": [
+  {
+  "article_id": 97,
+  "title": "China's durian boom is ripening into a regional supply-chain story: Economic Watch",
+  "sentence_idx": 21,
+  "text": "As Southeast Asia's main producing areas enter peak season, its durian imports are expected to keep rising between April and June."
+  },
+  {
+  "article_id": 65,
+  "title": "Johor eyeing 12 million visitors, RM42.48bil in tourism receipts this year",
+  "sentence_idx": 7,
+  "text": "He added that Singapore remains Johor’s largest source market, followed by Indonesia, China and India, all of which recorded notable increases in visitor numbers during the January-to-March period."
+  }
+  ],
+  "External_Sector + Fiscal_Government": [
+  {
+  "article_id": 159,
+  "title": "Cautious optimism on growth prospects",
+  "sentence_idx": 4,
+  "text": "Citing the IMF that artificial intelligence (AI)-related growth could contribute 0.1 percentage points to global GDP expansion, she told StarBiz: “Given Malaysia’s exposure to AI through its established position in the global value chain for semiconductors, as well as growing investments in digital services and data centres, we would connect Malaysia’s upgrade to that part of the story.” Another important factor, she said, is that Malaysia is relatively more cushioned from the effects of the Middle East conflict as a net energy exporter, while targeted subsidies as well as fiscal assistance is in place to support the domestic economy."
+  }
+  ],
+  "External_Sector + Inflation_Prices": [
+  {
+  "article_id": 174,
+  "title": "Singapore leads Asia in tightening policy on oil-price shock",
+  "sentence_idx": 4,
+  "text": "“As higher energy costs pass through supply chains worldwide, a broader range of Singapore’s import costs will increase.”"
+  },
+  {
+  "article_id": 121,
+  "title": "US weekly jobless claims increase marginally as labor market remains stable",
+  "sentence_idx": 3,
+  "text": "There are no signs yet of widespread layoffs from the U.S.-Israel war with Iran, which has disrupted shipping in the Strait of Hormuz and boosted the price of oil and other commodities, including fertilisers, petrochemicals and aluminium."
+  }
+  ],
+  "External_Sector + Inflation_Prices + Labor_Consumption": [
+  {
+  "article_id": 121,
+  "title": "US weekly jobless claims increase marginally as labor market remains stable",
+  "sentence_idx": 3,
+  "text": "There are no signs yet of widespread layoffs from the U.S.-Israel war with Iran, which has disrupted shipping in the Strait of Hormuz and boosted the price of oil and other commodities, including fertilisers, petrochemicals and aluminium."
+  }
+  ],
+  "External_Sector + Inflation_Prices + Real_Economic_Activity": [
+  {
+  "article_id": 82,
+  "title": "Asean economic ministers say Middle East tensions could slow regional growth, threaten energy security",
+  "sentence_idx": 1,
+  "text": "We expressed deep concern that the current disruptions to key maritime routes, particularly the Strait of Hormuz, where around one-quarter of global seaborne oil and liquefied natural gas (LNG) exports pass through, with over 80 per cent destined for Asia, are posing severe risks to global energy security, fuelling persistent volatility in oil and LNG prices, and sharply increasing freight, insurance, and logistics costs,' the ASEAN Economic Community Council said."
+  },
+  {
+  "article_id": 30,
+  "title": "Malaysia's economy remains resilient despite West Asia risks, says Bank Negara governor",
+  "sentence_idx": 12,
+  "text": "On the gross domestic product (GDP) forecast of 4.0 to 5.0 per cent for 2026, he said BNM has already factored in the impact of the West Asia conflict, including higher energy prices, supply chain disruptions and uncertain global growth momentum."
+  }
+  ],
+  "External_Sector + Labor_Consumption": [
+  {
+  "article_id": 121,
+  "title": "US weekly jobless claims increase marginally as labor market remains stable",
+  "sentence_idx": 3,
+  "text": "There are no signs yet of widespread layoffs from the U.S.-Israel war with Iran, which has disrupted shipping in the Strait of Hormuz and boosted the price of oil and other commodities, including fertilisers, petrochemicals and aluminium."
+  }
+  ],
+  "External_Sector + Real_Economic_Activity": [
+  {
+  "article_id": 149,
+  "title": "Malaysia’s economy remains robust, well supported by E&E sector, domestic demand",
+  "sentence_idx": 11,
+  "text": "It said manufacturing remains on a broadly positive trajectory, supported by sustained global E&E demand and a robust domestic economy, though it is sensitive to external developments and fluctuations in input costs."
+  },
+  {
+  "article_id": 84,
+  "title": "Building resilience for MSMEs in a changing digital economy",
+  "sentence_idx": 1,
+  "text": "From shifting global trade dynamics to evolving consumer expectations, the operating landscape has grown more complex in recent years."
+  }
+  ],
+  "Fiscal_Government": [
+  {
+  "article_id": 81,
+  "title": "Govt to allocate over RM710mil to help workers hit by layoffs, says PM",
+  "sentence_idx": 12,
+  "text": "This initiative will be funded by TalentCorp with an allocation of RM10mil,' he said."
+  },
+  {
+  "article_id": 89,
+  "title": "Chow: Penang’s healthy surplus means no budget revision yet",
+  "sentence_idx": 2,
+  "text": "“If we can save, there is no need to revise the budget,” he told reporters on Thursday (Apr 30)."
+  }
+  ],
+  "Fiscal_Government + Inflation_Prices": [
+  {
+  "article_id": 108,
+  "title": "Food supply chain shows early stress as fuel costs rise, says Akmal Nasrullah",
+  "sentence_idx": 12,
+  "text": "“As the prices of fuels such as coal and gas increase, the cost of electricity generation also rises, potentially affecting consumer tariffs if not carefully managed,' he said."
+  },
+  {
+  "article_id": 91,
+  "title": "More targeted price controls and subsidies needed for consumers",
+  "sentence_idx": 13,
+  "text": "Mohideen added that a portion of these savings could be channelled into food subsidies for the poorest groups to help cushion the impact of rising prices."
+  }
+  ],
+  "Fiscal_Government + Inflation_Prices + Real_Economic_Activity": [
+  {
+  "article_id": 141,
+  "title": "Claims of “only 15% affected” out of touch with reality: entire nation is paying for diesel price hikes says MCA VP",
+  "sentence_idx": 9,
+  "text": "He urged the government to recognise the wider economic effects of diesel price adjustments and to introduce targeted measures to reduce the burden on businesses and consumers."
+  }
+  ],
+  "Fiscal_Government + Labor_Consumption": [
+  {
+  "article_id": 81,
+  "title": "Govt to allocate over RM710mil to help workers hit by layoffs, says PM",
+  "sentence_idx": 0,
+  "text": "KUALA LUMPUR: An economic resilience package worth more than RM710mil will be implemented to ensure the country is prepared for crises that could lead to unemployment, says Prime Minister Datuk Seri Anwar Ibrahim."
+  },
+  {
+  "article_id": 81,
+  "title": "Govt to allocate over RM710mil to help workers hit by layoffs, says PM",
+  "sentence_idx": 10,
+  "text": "“To diversify skills and strengthen social security protection for gig workers, the government has channelled RM20mil to the Skills Development Fund Corporation, specifically for gig worker training,” he said."
+  }
+  ],
+  "Fiscal_Government + Real_Economic_Activity": [
+  {
+  "article_id": 59,
+  "title": "Malaysia must capitalise on West Asia crisis, says Fernandes",
+  "sentence_idx": 3,
+  "text": "Fernandes said that to achieve and maintain growth, the country must make difficult decisions, especially regarding the re-evaluation of subsidies."
+  },
+  {
+  "article_id": 28,
+  "title": "PM to announce plan to ensure continuity of M'sia's oil supply in mid-May, says Economy Minister",
+  "sentence_idx": -1,
+  "text": "PM to announce plan to ensure continuity of M'sia's oil supply in mid-May, says Economy Minister"
+  }
+  ],
+  "Inflation_Prices": [
+  {
+  "article_id": 128,
+  "title": "Govt preparing long-term measures to mitigate Strait of Hormuz crisis impact, says Economy Ministry",
+  "sentence_idx": 7,
+  "text": "The Statistics Department Consumer Price Index report for March 2026 showed inflation rising to 1.7% from 1.4% in February."
+  },
+  {
+  "article_id": 175,
+  "title": "Safer option - Gold rises over 1% as easing oil prices temper inflation worries",
+  "sentence_idx": 10,
+  "text": "Crude prices have risen about 40% since the onset of the Middle East conflict, and have stoked inflation concerns."
+  }
+  ],
+  "Inflation_Prices + Labor_Consumption": [
+  {
+  "article_id": 128,
+  "title": "Govt preparing long-term measures to mitigate Strait of Hormuz crisis impact, says Economy Ministry",
+  "sentence_idx": 10,
+  "text": "The second quarter of 2026 will be used as a key period to assess whether rising costs translate into operational downsizing or job losses."
+  },
+  {
+  "article_id": 180,
+  "title": "Exclusive-US officials underwhelmed by French far-right's plans for economy",
+  "sentence_idx": 11,
+  "text": "The National Rally has become France's largest parliamentary party - and a potential victor in 2027 - by coupling ‌a hardline stance on immigration with populist pledges to defend jobs and purchasing power."
+  }
+  ],
+  "Inflation_Prices + Monetary_Financial": [
+  {
+  "article_id": 47,
+  "title": "Moody’s names Thailand among most resilient emerging markets",
+  "sentence_idx": 12,
+  "text": "These countries also benefited from clear and predictable monetary policy frameworks, inflation remaining within expected ranges, and exchange rates that could adjust flexibly to market conditions."
+  },
+  {
+  "article_id": 8,
+  "title": "Asia markets falter as hot US inflation, shaky Iran ceasefire weigh",
+  "sentence_idx": 0,
+  "text": "SINGAPORE: Stocks started the Asian session on the back foot on Wednesday, with talks between Washington and Tehran at a standstill as hotter-than-expected U.S. inflation underscored the growing economic toll of the Middle East conflict."
+  }
+  ],
+  "Inflation_Prices + Monetary_Financial + Real_Economic_Activity": [
+  {
+  "article_id": 16,
+  "title": "Gold seen bullish, to hit US5,600 by year-end - UBS", "sentence_idx": 5, "text": "Teves said the market would be watching for key factors on how the inflation-growth mix evolves, particularly in the second half of the year, as investors assess the economic impact of elevated energy prices." }, { "article_id": 32, "title": "Call for prudence as interest rates stay pat", "sentence_idx": 0, "text": "PETALING JAYA: Economists are advocating a cautious outlook on the country’s growth and inflation scene, as Bank Negara Malaysia (BNM) has decided to keep the overnight policy rate (OPR) at 2.75% after the latest Monetary Policy Committee meeting yesterday." } ], "Inflation_Prices + Real_Economic_Activity": [ { "article_id": 85, "title": "Balancing spending cuts and growth", "sentence_idx": 14, "text": "He warned added spending could worsen the supply crunch, drive up prices further, and risked worsening inflation without increasing output as it stimulates demand just when goods become scarce or when production gets disrupted through shortage of raw materials and higher prices." }, { "article_id": 152, "title": "Low inflation helps Malaysia weather energy supply shock, says BNM governor", "sentence_idx": 2, "text": "Certainly, what we are facing right now is really a supply shock, and it is good to see how this fits into our domestic prices,” he told CNBC in an interview held in Washington." } ], "Labor_Consumption": [ { "article_id": 15, "title": "Malaysia’s unemployment rate holds steady at 2.9% in March 2026", "sentence_idx": 6, "text": "On the same note, the number of own-account workers recorded a 0.3% rise to 3.14 million persons compared with 3.13 million in February,\" he added." }, { "article_id": 43, "title": "AirTrunk expands footprint", "sentence_idx": 9, "text": "On job creation, he said that for JHB 3 and JHB 4, more than 100 direct jobs are expected to be created, with up to 1,000 jobs generated locally across related sectors." } ], "Labor_Consumption + Real_Economic_Activity": [ { "article_id": 61, "title": "For foreign workers in the Mideast, risk from the Iran war collides with economic strain at home", "sentence_idx": 40, "text": "A slowdown in key sectors like real estate and construction will hit migrant workers directly, said Hasan of BRAC." }, { "article_id": 27, "title": "SMEs under pressure from rising diesel costs", "sentence_idx": 17, "text": "Furthermore, with the global economic outlook remaining uncertain, any large-scale collapse of local SMEs would not only affect employment but also weaken the broader national economic ecosystem." } ], "Monetary_Financial": [ { "article_id": 150, "title": "Ringgit strengthens against US dollar on strong 1Q GDP estimate", "sentence_idx": 10, "text": "The ringgit gained against the Thai baht to 12.3084/3274 from 12.3473/3664 and edged up against the Philippine peso to 6.58/6.59 from 6.59/6.60 previously." }, { "article_id": 16, "title": "Gold seen bullish, to hit US5,600 by year-end - UBS",
+"sentence_idx": -1,
+"text": "Gold seen bullish, to hit US$5,600 by year-end - UBS"
+}
+],
+"Monetary_Financial + Fiscal_Government": [
+{
+"article_id": 52,
+"title": "Rafizi speaks to MACC for third day",
+"sentence_idx": 6,
+"text": "Rafizi is being questioned over allegations linked to a semiconductor investment deal involving the Economy Ministry and Arm Holdings."
+},
+{
+"article_id": 103,
+"title": "Responding constructively to outside warnings",
+"sentence_idx": 1,
+"text": "Faced with the risk of sovereign default, the country turned to a massive bailout led by the International Monetary Fund (IMF) after having failed to push through painful domestic reforms in earlier years."
+}
+],
+"Monetary_Financial + Fiscal_Government + Inflation_Prices": [
+{
+"article_id": 24,
+"title": "BMI sees Bank Negara holdings OPR at 2.75% in July amid contained inflation",
+"sentence_idx": 4,
+"text": "While BNM acknowledged that elevated global commodity prices will probably nudge inflation higher, it reiterated its expectation for the impact to ‘remain contained’ as ongoing subsidy measures will keep a lid on price pressures."
+}
+],
+"Monetary_Financial + Fiscal_Government + Real_Economic_Activity": [
+{
+"article_id": 52,
+"title": "Rafizi speaks to MACC for third day",
+"sentence_idx": 6,
+"text": "Rafizi is being questioned over allegations linked to a semiconductor investment deal involving the Economy Ministry and Arm Holdings."
+},
+{
+"article_id": 103,
+"title": "Responding constructively to outside warnings",
+"sentence_idx": 1,
+"text": "Faced with the risk of sovereign default, the country turned to a massive bailout led by the International Monetary Fund (IMF) after having failed to push through painful domestic reforms in earlier years."
+}
+],
+"Monetary_Financial + Real_Economic_Activity": [
+{
+"article_id": 103,
+"title": "Responding constructively to outside warnings",
+"sentence_idx": 10,
+"text": "South Korea was eventually able to recover from the crisis much faster than most had expected, repaying IMF loans ahead of schedule, carrying out restructuring and regaining growth momentum to join the ranks of major economies."
+},
+{
+"article_id": 54,
+"title": "Ringgit ends mostly firmer against major, regional currencies ahead of MPC meeting",
+"sentence_idx": 7,
+"text": "At the same time, there is also a valid concern on global growth prospects, which may necessitate easing monetary policy stance,” he told Bernama."
+}
+],
+"Real_Economic_Activity": [
+{
+"article_id": 149,
+"title": "Malaysia’s economy remains robust, well supported by E&E sector, domestic demand",
+"sentence_idx": 12,
+"text": "Private investment is projected to stay robust, driven by infrastructure rollouts, data centre developments, and continued expansion in the manufacturing sector,” it added."
+},
+{
+"article_id": 87,
+"title": "Repositioning Asean in today’s evolving global order",
+"sentence_idx": 15,
+"text": "Supply chain disruptions are shifting operating models from “just in time” to 'just in case'."
+}
+]
+}
