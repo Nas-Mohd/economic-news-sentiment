@@ -7,7 +7,7 @@ from snorkel.labeling import labeling_function
 from snorkel.labeling.lf.nlp import nlp_labeling_function
 from labeling.keywords import KEYWORDS
 from labeling.anchors import ANCHORS, SEMANTIC_THRESHOLD
-from labeling.factories import make_preprocessor
+from labeling.labeling_functions.lf_factories import make_preprocessor
 
 
 PRESENT = 1
