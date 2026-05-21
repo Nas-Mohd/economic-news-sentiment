@@ -51,7 +51,7 @@ def make_semantic_lf(category_name, anchors, embedder, threshold=0.5):
     def lf_semantic(x):
         if any(util.cos_sim(x.embedding, anchor) > threshold for anchor in anchors[category_name]):
             return PRESENT
-        elif all(util.cos_sim(x.embedding, anchor) < threshold - 0.15 for anchor in anchors[category_name]):
+        elif all(util.cos_sim(x.embedding, anchor) < 0.05 for anchor in anchors[category_name]):
             return ABSENT
         return ABSTAIN
 
