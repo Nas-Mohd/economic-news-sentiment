@@ -24,23 +24,35 @@ def make_preprocessor(embedder):
     return cache_embeddings
 
 def make_keyword_lf(category_name, keywords):
-    # 1. Use LEMMA attribute so SpaCy natively handles variations (run, running, runs)
-    matcher = PhraseMatcher(nlp.vocab, attr="LEMMA")
+    lower_matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
+    lemma_matcher = PhraseMatcher(nlp.vocab, attr="LEMMA")
     
-    # 2. Process keywords through the full pipeline. 
-    # Pre-lowercasing the keyword string keeps acronyms safe from aggressive lemmatization.
-    patterns = [nlp(kw.lower()) for kw in keywords[category_name]]
-    matcher.add(category_name, patterns)
+    keyword_list = keywords[category_name] if isinstance(keywords, dict) else keywords
+    
+    # Compile patterns
+    lower_patterns = [nlp(kw.lower()) for kw in keyword_list]
+    lemma_patterns = [nlp(kw) for kw in keyword_list]
+    
+    lower_matcher.add(f"{category_name}_lower", lower_patterns)
+    lemma_matcher.add(f"{category_name}_lemma", lemma_patterns)
 
     @nlp_labeling_function()
     def lf_keyword(x):
-        # 3. x.doc is already provided by Snorkel, but to apply our lowercase fix,
-        # we pull the raw text, lowercase it, and re-process it through the full NLP pipeline.
-        normalized_doc = nlp(x.doc.text.lower())
+        # 1. Use the pre-computed Snorkel doc for the heavy linguistic matching
+        native_doc = x.doc 
         
-        matches = matcher(normalized_doc)
-        if matches:
+        # 2. OPTIMIZATION: Use make_doc for the lowercase fallback.
+        # This only tokenizes and skips the heavy tagger/parser/lemmatizer components.
+        lower_doc = nlp.make_doc(native_doc.text.lower())
+        
+        # 3. Check LOWER first
+        if lower_matcher(lower_doc):
             return PRESENT
+            
+        # 4. Check LEMMA second
+        if lemma_matcher(native_doc):
+            return PRESENT
+            
         return ABSTAIN
 
     lf_keyword.name = f"lf_{category_name}_nlp_matcher"
