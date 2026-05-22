@@ -23,19 +23,22 @@ def make_preprocessor(embedder):
         return x
     return cache_embeddings
 
-
 def make_keyword_lf(category_name, keywords):
-    matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
-    patterns = [
-        nlp.make_doc(" ".join(t.lemma_.lower() for t in nlp(kw)))
-        for kw in keywords
-    ]
+    # 1. Use LEMMA attribute so SpaCy natively handles variations (run, running, runs)
+    matcher = PhraseMatcher(nlp.vocab, attr="LEMMA")
+    
+    # 2. Process keywords through the full pipeline. 
+    # Pre-lowercasing the keyword string keeps acronyms safe from aggressive lemmatization.
+    patterns = [nlp(kw.lower()) for kw in keywords[category_name]]
     matcher.add(category_name, patterns)
 
     @nlp_labeling_function()
     def lf_keyword(x):
-        lemmatized_doc = nlp.make_doc(" ".join(t.lemma_.lower() for t in x.doc))
-        matches = matcher(lemmatized_doc)
+        # 3. x.doc is already provided by Snorkel, but to apply our lowercase fix,
+        # we pull the raw text, lowercase it, and re-process it through the full NLP pipeline.
+        normalized_doc = nlp(x.doc.text.lower())
+        
+        matches = matcher(normalized_doc)
         if matches:
             return PRESENT
         return ABSTAIN

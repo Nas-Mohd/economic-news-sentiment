@@ -40,7 +40,8 @@ KEYWORDS: dict[str, list[str]] = {
         "stock", "bond", "bursa", "equity", "yield", "index",
         "bourse", "indices", "klci", "fbmklci", "derivative", "derivatives", "futures market", "etf", "exchange-traded fund", "reit", "sukuk",
         "liquidation", "sell-off", "rally", "bull market", "bear market", "market capitalization", "market cap", "trading volume", "turnover value", "equities market",
-        "ipo", "initial public offering", "treasury bills", "t-bills", "capital markets", "debt securities", "share price", "dividend yield"
+        "ipo", "initial public offering", "treasury bills", "t-bills", "capital markets", "debt securities", "share price", "dividend yield", "stock", "bond", "bursa", "equity", "yield", "index",
+    "bullish", "bearish", "ubs", "target price"
     ],
     "trade_external": [
         "export", "import", "trade balance", "tariff", "trade war", "trade gap", 'supply chain', 'disruptions', 'logistics network',
