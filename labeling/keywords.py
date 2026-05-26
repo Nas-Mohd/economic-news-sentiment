@@ -89,10 +89,11 @@ KEYWORDS: dict[str, list[str]] = {
     ],
     'fiscal_actions': [
         'urge', 'introduce', 'implement', 'announce', 'adjust', 'reform', 'evaluate','evaluation', 'regard',
-        'regulate', 'measure', 'table', 'approve', 'slash', 'hike', 'allocate', 'ensure'
+        'regulate', 'measure', 'table', 'approve', 'slash', 'hike', 'allocate', 'ensure', "fund", "allocate", "disburse", "spend", "grant", 
+        "subsidize", "inject", "provide", "approve"
     ],
     'fiscal_instruments': [
-        'subsidy', 'tax', 'taxation', 'budget', 'spending', 'expenditure', 'subsidy',
+        'subsidy', 'tax', 'taxation', 'budget', 'spending', 'expenditure', 'subsidy', 'allocations',
         'tariff', 'levy', 'excise', 'stimulus', 'allocation', 'package', 'supply', 'plan'
     ],
     'labor_actions': [
