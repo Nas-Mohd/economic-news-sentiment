@@ -83,6 +83,7 @@ BUSINESS_ANCHORS = [
 FINANCIAL_ANCHORS = [
     "stock markets rallied on strong earnings",
     "investors have bullish expectations",
+    "Investors and financial market participants are closely monitoring forward-looking macroeconomic data to price in upcoming risk factors.",
     "google report record high profits, 3 points",
     "The S&P 500 shed 1.24% to end at 7,408.50, while the Nasdaq Composite slipped 1.54% to 26,225.14.",
     "At the close of trade, the stock index finished points higher.",
