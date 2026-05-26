@@ -8,6 +8,7 @@ SEMANTIC_THRESHOLD = 0.35
 ECONOMIC_ANCHORS = [
     "Gold seen bearish, according to global investor sentiments as reported by central bank",
     "asia increased imports",
+    "Political manifestos, election campaigns, and party platforms frequently address sovereign economic stability, household purchasing power, and domestic workforce protection policies.",
     "A high-ranking government minister faces official questioning and institutional scrutiny regarding state-backed investment deals, public venture funds, or corporate partnerships with multinational tech firms.",
     "Government entities and ministries face regulatory oversight and institutional scrutiny regarding public capital allocations for strategic foreign direct investments, sovereign tech venture funding, and semiconductor supply chain partnerships.",
     "Analysts warned that prolonged inflation could weigh further on economic recovery prospects.",
