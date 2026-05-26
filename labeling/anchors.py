@@ -61,6 +61,7 @@ ECONOMIC_GROWTH_ANCHORS = [
 LABOR_ANCHORS = [
     "layoffs increased amid cost cuts",
     "labor market remains tight",
+    "Sovereign economic interventions and national contingency plans aim to safeguard systemic employment stability and mitigate widespread job losses during market crises.",
     "National employment statistics tracking own-account workers, workforce participation rates, and monthly changes in headcount populations.",
     "Workforce training programs, social security protections, human capital development, and gig worker welfare.",
     "Labor unions accused management of wage theft, unfair contract breaches, and retaliatory terminations during the worker dispute.",
