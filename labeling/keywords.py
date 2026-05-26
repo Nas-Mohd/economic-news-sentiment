@@ -46,7 +46,7 @@ KEYWORDS: dict[str, list[str]] = {
     "trade_external": [
         "export", "import", "trade balance", "tariff", "trade war", "trade gap", 'supply chain', 'disruptions', 'logistics network',
         "exchange rate", "free trade", "devaluation", "trade deficit", "trade surplus", "current account",
-        'usd','euro','ringgit','baht','peso','dollar','currency','myr','yen','yuan','php',
+        'usd','euro','ringgit','baht','peso','dollar','currency','myr','yen','yuan','php', "source market",
         "fx", "forex", "appreciation", "depreciation", "currency peg", "foreign reserves", "international reserves", "spot market", "cross-rate", "undervalued currency",
         "freight", "cargo", "shipping lane", "port congestion", "customs duty", "bill of lading", "maritime trade", "transshipment", "vessel", "container terminal"
     ],
