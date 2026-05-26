@@ -11,7 +11,8 @@ KEYWORDS: dict[str, list[str]] = {
     "economic_growth": [
         "gdp", "recession", "economic growth", "economic expansion",
          "maintain growth", "sustain growth", "gdp growth", "growth trajectory"
-        "productivity gain", "output growth", "quarterly growth", "annual growth"
+        "productivity gain", "output growth", "quarterly growth", "annual growth",
+        "economic impact", "economic consequences", "economic effects"
     ],
     "labor_market": [
         "unemployment", "layoff", "job market", "labor participation", "wage",

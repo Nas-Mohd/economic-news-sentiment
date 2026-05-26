@@ -51,6 +51,7 @@ INFLATION_ANCHORS = [
 # Economic Growth : GDP CPI Recession
 ECONOMIC_GROWTH_ANCHORS = [
     "recession fears are mounting",
+    "Changes in regulatory pricing mechanisms structurally impact aggregate domestic demand, altering the operating costs of commercial businesses and household consumption patterns.",
     "economy grew faster than expected",
     "the economy contracted sharply",
     "National policymakers must implement long-term structural reforms and fiscal adjustments to sustain macroeconomic growth and ensure future economic stability.",
