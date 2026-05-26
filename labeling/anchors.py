@@ -41,6 +41,7 @@ MONETARY_ANCHORS = [
 # Inflation
 INFLATION_ANCHORS = [
     "cost of living has gone up",
+    "Global supply chain shocks and shipping network disruptions are driving up raw material commodity input prices.",
     "As skyrocketing diesel costs ripple through the supply chain, economists warn that unmitigated fuel hikes are stoking broader inflation, leaving both commercial enterprises and household consumers vulnerable to a sharp increase in the cost of living.",
     "prices continue to climb year-on-year",
     "inflationary pressures remain elevated",
