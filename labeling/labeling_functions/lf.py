@@ -184,9 +184,43 @@ def lf_fiscal_sector_clash_exclusion(x):
     If a sentence is overwhelmingly tracking heavy monetary or external macro metrics
     WITHOUT fiscal keywords, explicitly vote 0 (Absent) instead of abstaining.
     """
+    KEYWORDS['fiscal_policy_clash'] = [
+    # === 1. Taxation & Government Revenue (Direct & Indirect) ===
+    "tax", "taxes", "taxation", "corporate tax", "income tax", "windfall tax",
+    "sst", "gst", "sales tax", "service tax", "value-added tax", "vat",
+    "tariff", "tariffs", "customs duty", "excise duty", "tax holiday", 
+    "tax incentive", "tax incentives", "tax exemption", "tax revenue",
+    "bracket", "tax bracket", "capital gains tax", "cgt",
+
+    # === 2. National Budgeting & Expenditures ===
+    "budget", "national budget", "belanjawan", "supply bill", "fiscal budget",
+    "operating expenditure", "opex", "development expenditure", "depex",
+    "government allocation", "government spending", "public spending",
+    "state coffers", "treasury allocation", "public expenditure",
+
+    # === 3. Subsidies & Social Assistance (Crucial for Malaysia/SEA context) ===
+    "subsidy", "subsidies", "targeted subsidy", "subsidy rationalisation",
+    "subsidy restructuring", "fuel subsidy", "ron95 subsidy", "diesel subsidy",
+    "cash aid", "cash assistance", "fiscal assistance", "financial assistance",
+    "br1m", "bsh", "bpr", "str", "sumbangan tunai rahmah", "social safety net",
+    "welfare payout", "government handout",
+
+    # === 4. Sovereign Debt & Fiscal Deficits ===
+    "fiscal deficit", "budget deficit", "fiscal surplus", "budget surplus",
+    "sovereign debt", "government debt", "national debt", "public debt",
+    "debt-to-gdp ratio", "fiscal consolidation", "statutory debt ceiling",
+    "debt ceiling", "treasury bonds", "mgs", "malaysian government securities",
+
+    # === 5. Institutional Fiscal Frameworks & Legistlation ===
+    "ministry of finance", "mof", "treasury", "fiscal policy committee", "fpc",
+    "inland revenue board", "lhdn", "customs department", "royal malaysian customs",
+    "fiscal responsibility act", "fra", "public finance", "fiscal space"
+    ]
+
+
     has_monetary = contains_keywords(x.text, KEYWORDS['monetary_policy'])
     has_external = contains_keywords(x.text, KEYWORDS['trade_external']) or contains_keywords(x.text, KEYWORDS['energy_commodities'])
-    has_fiscal = contains_keywords(x.text, KEYWORDS['fiscal_policy'])
+    has_fiscal = contains_keywords(x.text, KEYWORDS['fiscal_policy_clash'])
 
     # If it's heavily monetary/external but lacks fiscal words, vote ABSENT (0)
     if (has_monetary or has_external) and not has_fiscal:
