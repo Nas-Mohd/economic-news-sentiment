@@ -119,7 +119,7 @@ FISCAL_ANCHORS = [
     # --- Budgetary Frameworks & Deficits ---
     "The government outlined its revised budgetary framework, targeting a reduction in the fiscal deficit through streamlined public expenditures.",
     "The annual budget allocation prioritized healthcare, education, and rural development civil projects.",
-
+    "The administration is launching a state-funded development initiative backed by a multi-million dollar public capital allocation.",
     # --- Sovereign Debt & Fiscal Discipline ---
     "Economists warned that rising statutory debt levels could prompt international rating agencies to reassess the sovereign outlook.",
     "The treasury tap-issued new government investment issues (MGS/GII) to fund the fiscal deficit.",
