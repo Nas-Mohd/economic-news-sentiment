@@ -107,7 +107,7 @@ TRADE_ANCHORS = [
  # Fiscal Policy: Government spending and budget
 FISCAL_ANCHORS = [
     # --- Government Spending & Subsidies ---
-    "The finance ministry announced a major restructuring of targeted fuel and electricity subsidies.",
+    "The finance ministry announced structural adjustments to national public expenditure programs and targeted state subsidy frameworks.",
     "Government economic resilience packages, financial stimulus programs, and national emergency funding initiatives.",
     "The Prime Minister announced a national regulation plan to ensure the security  of strategic commodity and energy supplies.",
     "Government leadership emphasized that maintaining national economic growth requires difficult policy decisions regarding subsidy re-evaluation and fiscal restructuring.",
