@@ -61,7 +61,8 @@ KEYWORDS: dict[str, list[str]] = {
     ],
     "energy_commodities": [
         "oil", "corn", "wheat", "palm oil", "solar", "wind", "nuclear", "electricity",
-        "natural gas", "coal", "renewables", "metals", "price shock", "carbon", "supply disruption"
+        "natural gas", "coal", "renewables", "metals", "price shock", "carbon", "supply disruption",
+        "net exporter", "value chain", "semiconductor", "net importer", "importer", "exporter"
     ],
     "banking_credit": [
         "lending", "debt", "liquidity stress", "default", "interest rate", "bank",
