@@ -55,7 +55,7 @@ ECONOMIC_GROWTH_ANCHORS = [
     "economy grew faster than expected",
     "the economy contracted sharply",
     "National policymakers must implement long-term structural reforms and fiscal adjustments to sustain macroeconomic growth and ensure future economic stability.",
-    "Surging manufacturing output and strong industrial production cycles are expected to significantly boost quarterly economic growth."
+    "Expanded manufacturing plant capacity and baseline industrial output volumes support stable long-term quarterly GDP expansions."
     ]
 # Labor Market : Unemployment rate, minimum wage
 LABOR_ANCHORS = [

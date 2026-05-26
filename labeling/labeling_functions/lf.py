@@ -1,5 +1,6 @@
 
 import re
+import torch
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from sentence_transformers import SentenceTransformer, util
@@ -8,7 +9,7 @@ from snorkel.labeling.lf.nlp import nlp_labeling_function
 from labeling.keywords import KEYWORDS
 from labeling.anchors import ANCHORS, SEMANTIC_THRESHOLD
 from labeling.labeling_functions.lf_factories import make_preprocessor
-
+from typing import Dict, List
 
 PRESENT = 1
 ABSENT = 0
@@ -20,6 +21,15 @@ embedder = SentenceTransformer("all-MiniLM-L6-v2")
 economic_anchor_embeddings = []
 for anchor in ANCHORS['economic_news']:
     economic_anchor_embeddings.append(embedder.encode(anchor, convert_to_tensor=True))
+
+ECONOMIC_ASPECTS = ["monetary_policy", "inflation", "economic_growth", "labor_market", "consumer_activity", "business_activity", "financial_markets", "trade_external", "fiscal_policy", "energy_commodities", "banking_credit", "corporate_climate"]
+
+# --- Convert to dict of list of tensors ---
+ANCHORS_EMBEDDING: Dict[str, List] = {} # Value type will be list[tensor]
+for category in ECONOMIC_ASPECTS:
+    ANCHORS_EMBEDDING[category] = [
+    embedder.encode(phrase, convert_to_tensor=True) for phrase in ANCHORS[category]
+    ]
 
 
 cache_embeddings = make_preprocessor(embedder)
@@ -81,9 +91,30 @@ def lf_lemmatized_cost_push(x):
 # Check if sentence is actually related to economics
 @labeling_function(pre=[cache_embeddings])
 def lf_is_not_economic_news(x):
-    # If it falls way below your baseline anchor similarity, vote ABSENT (0)
-    if all(util.cos_sim(x.embedding, anchor) < SEMANTIC_THRESHOLD for anchor in economic_anchor_embeddings):
+    """
+    Acts as a master filter. Votes ABSENT (0) if the text's embedding fails 
+    to clear the SEMANTIC_THRESHOLD against every single anchor in our collection.
+    """
+    # 1. Start with your baseline economic news anchors
+    all_tensors = list(economic_anchor_embeddings)
+    
+    # 2. Dynamically gather and flatten all tensors from your ECONOMIC_ASPECTS registry
+    for category in ECONOMIC_ASPECTS:
+        if category in ANCHORS_EMBEDDING:
+            all_tensors.extend(ANCHORS_EMBEDDING[category])
+            
+    # 3. Stack individual 1D tensors into a single, high-performance 2D matrix
+    # (Assuming embeddings are PyTorch tensors based on convert_to_tensor=True)
+    master_anchor_matrix = torch.stack(all_tensors)
+    
+    # 4. Compute cosine similarity across the entire matrix in one parallel pass
+    similarities = util.cos_sim(x.embedding, master_anchor_matrix)[0]
+    
+    # 5. Gatekeeper Logic: If it doesn't match a single anchor, rule it out.
+    # We use torch.any() for optimized GPU/CPU tensor evaluation
+    if not torch.any(similarities >= SEMANTIC_THRESHOLD):
         return ABSENT
+        
     return ABSTAIN
 
 
