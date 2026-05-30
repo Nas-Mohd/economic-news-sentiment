@@ -52,6 +52,7 @@ INFLATION_ANCHORS = [
 # Economic Growth : GDP CPI Recession
 ECONOMIC_GROWTH_ANCHORS = [
     "recession fears are mounting",
+    "Market analysts and research houses maintain a cautious outlook on national growth momentum and macro economic performance indicators following recent policy announcements",
     "Changes in regulatory pricing mechanisms structurally impact aggregate domestic demand, altering the operating costs of commercial businesses and household consumption patterns.",
     "economy grew faster than expected",
     "the economy contracted sharply",
@@ -62,7 +63,7 @@ ECONOMIC_GROWTH_ANCHORS = [
 LABOR_ANCHORS = [
     "layoffs increased amid cost cuts",
     "labor market remains tight",
-    "Political parties and opposition leaders are gaining voters by promising to defend local jobs, boost wages, and protect citizen purchasing power from economic distress.",
+    "Populist parties and opposition leaders are gaining voters by promising to defend jobs, boost wages and improve purchasing power.",
     "Downturns in labor-intensive industries heavily impact vulnerable workforces, contract personnel, and migrant laborers reliant on manual employment cycles.",
     "Industrial expansions and local development projects stimulate robust job creation, generating significant direct employment and downstream workforce opportunities",
     "Sovereign economic interventions and national contingency plans aim to safeguard systemic employment stability and mitigate widespread job losses during market crises.",
