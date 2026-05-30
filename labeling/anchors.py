@@ -62,6 +62,7 @@ ECONOMIC_GROWTH_ANCHORS = [
 LABOR_ANCHORS = [
     "layoffs increased amid cost cuts",
     "labor market remains tight",
+    "Political parties and opposition leaders are gaining voters by promising to defend local jobs, boost wages, and protect citizen purchasing power from economic distress.",
     "Downturns in labor-intensive industries heavily impact vulnerable workforces, contract personnel, and migrant laborers reliant on manual employment cycles.",
     "Industrial expansions and local development projects stimulate robust job creation, generating significant direct employment and downstream workforce opportunities",
     "Sovereign economic interventions and national contingency plans aim to safeguard systemic employment stability and mitigate widespread job losses during market crises.",
