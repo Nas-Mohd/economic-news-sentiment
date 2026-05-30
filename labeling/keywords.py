@@ -79,14 +79,17 @@ KEYWORDS: dict[str, list[str]] = {
     "rate_actions": [
         "hike", "cut", "lower", "increase", "decrease", "maintain", "hold", "pause", "tighten", "raise"
     ],
-    "advanced_context": [
-        r"weather\s+the\s+(?:current\s+)?\w+\s+shock",   # Catches structural resilience (Real_Economic_Activity)
-        r"supply\s+shock",                               # Supply chain disruptions (Real_Economic_Activity)
+    "advanced_context_real": [
+      r"weather\s+the\s+(?:current\s+)?\w+\s+shock",   # Catches structural resilience (Real_Economic_Activity)
+      r"supply\s+shock",  # Supply chain disruptions (Real_Economic_Activity)
+      # Should look for industry indicators coupled with directional market movement
+      r"(slowdown|contraction|slump|boom|growth)\s+in\s+.*(sector|industry|real estate|construction)"
+
+    ],
+    "advanced_context_trade": [
         r"global\s+(?:oil|commodity|energy|market|price)", # International transmission (External_Sector)
         r"war\s+in\s+\w+",                                # Geopolitical macro impact (External_Sector)
         r"external\s+(?:shock|demand|factor|environment)", # Direct external sector mention (External_Sector)
-        # Should look for industry indicators coupled with directional market movement
-        r"(slowdown|contraction|slump|boom|growth)\s+in\s+.*(sector|industry|real estate|construction)"
     ],
     'fiscal_actions': [
         'urge', 'introduce', 'implement', 'announce', 'adjust', 'reform', 'evaluate','evaluation', 'regard',

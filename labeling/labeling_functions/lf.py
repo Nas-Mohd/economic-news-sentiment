@@ -35,7 +35,8 @@ for category in ECONOMIC_ASPECTS:
 cache_embeddings = make_preprocessor(embedder)
 
 # Pre-compile the regex pattern outside the function loop for maximum speed
-COMPILED_CONTEXT_REGEX = re.compile("|".join(KEYWORDS["advanced_context"]), re.IGNORECASE)
+COMPILED_CONTEXT_REGEX_REAL = re.compile("|".join(KEYWORDS["advanced_context_real"]), re.IGNORECASE)
+COMPILED_CONTEXT_REGEX_TRADE = re.compile("|".join(KEYWORDS["advanced_context_trade"]), re.IGNORECASE)
 
 # Helper function for fast regex matching
 def contains_keywords(text: str, keywords: list[str]) -> bool:
@@ -355,12 +356,21 @@ def lf_deny_fiscal_if_pure_labor(x):
     return ABSTAIN
 
 @labeling_function()
-def lf_advanced_context_regex(x):
+def lf_advanced_context_regex_trade(x):
     """
     Scans for complex structural phrases representing external sector impacts
     and real economic activity shocks in a single high-speed pass.
     """
-    return PRESENT if COMPILED_CONTEXT_REGEX.search(x.text) else ABSTAIN
+    return PRESENT if COMPILED_CONTEXT_REGEX_TRADE.search(x.text) else ABSTAIN
+
+@labeling_function()
+def lf_advanced_context_regex_real(x):
+    """
+    Scans for complex structural phrases representing external sector impacts
+    and real economic activity shocks in a single high-speed pass.
+    """
+    return PRESENT if COMPILED_CONTEXT_REGEX_REAL.search(x.text) else ABSTAIN
+
 
 @labeling_function(pre=[cache_embeddings])
 def lf_fiscal_policy_semantic_true(x):
