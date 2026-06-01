@@ -61,8 +61,8 @@ class AspectClassifier(nn.Module):
 
     # ── Forward ──────────────────────────────────────────────────────────────
 
-    def forward(self, input_ids, attention_mask) -> torch.Tensor:
-        out = self.backbone(input_ids=input_ids, attention_mask=attention_mask)
+    def forward(self, input_ids, attention_mask, token_type_ids = None) -> torch.Tensor:
+        out = self.backbone(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids,)
         # Use [CLS] token representation
         cls = out.last_hidden_state[:, 0, :]   # [batch, hidden]
         return self.head(cls)                   # [batch, 6]  — raw logits
@@ -139,8 +139,8 @@ class BaselineClassifier(nn.Module):
         hidden_size = self.backbone.config.hidden_size
         self.head = MultiLabelHead(hidden_size, cfg.num_labels, cfg.dropout)
 
-    def forward(self, input_ids, attention_mask) -> torch.Tensor:
-        out = self.backbone(input_ids=input_ids, attention_mask=attention_mask)
+    def forward(self, input_ids, attention_mask, token_type_ids = None) -> torch.Tensor:
+        out = self.backbone(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids,)
         cls = out.last_hidden_state[:, 0, :]
         return self.head(cls)
 

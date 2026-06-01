@@ -188,11 +188,15 @@ class Trainer:
             attention_mask = batch["attention_mask"].to(self.cfg.device)
             labels         = batch["labels"].to(self.cfg.device)
             mask           = batch["mask"].to(self.cfg.device)
+            token_type_ids = batch.get("token_type_ids")
+            if token_type_ids is not None:
+                token_type_ids = token_type_ids.to(self.cfg.device)
+
 
             optimizer.zero_grad()
 
             with autocast(enabled=self.cfg.fp16):
-                logits = self.model(input_ids, attention_mask)
+                logits = self.model(input_ids, attention_mask, token_type_ids)
                 loss   = self.loss_fn(logits, labels, mask)
 
             self.scaler.scale(loss).backward()
@@ -225,9 +229,12 @@ class Trainer:
             attention_mask = batch["attention_mask"].to(self.cfg.device)
             labels         = batch["labels"].to(self.cfg.device)
             mask           = batch["mask"].to(self.cfg.device)
+            token_type_ids = batch.get("token_type_ids")
+            if token_type_ids is not None:
+                token_type_ids = token_type_ids.to(self.cfg.device)
 
             with autocast(enabled=self.cfg.fp16):
-                logits = self.model(input_ids, attention_mask)
+                logits = self.model(input_ids, attention_mask, token_type_ids)
                 loss   = self.loss_fn(logits, labels, mask)
 
             total_loss += loss.item()
