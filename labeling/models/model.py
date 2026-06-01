@@ -62,7 +62,10 @@ class AspectClassifier(nn.Module):
     # ── Forward ──────────────────────────────────────────────────────────────
 
     def forward(self, input_ids, attention_mask, token_type_ids = None) -> torch.Tensor:
-        out = self.backbone(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids,)
+        out = self.backbone(
+            input_ids=input_ids, 
+            attention_mask=attention_mask
+        )
         # Use [CLS] token representation
         cls = out.last_hidden_state[:, 0, :]   # [batch, hidden]
         return self.head(cls)                   # [batch, 6]  — raw logits
