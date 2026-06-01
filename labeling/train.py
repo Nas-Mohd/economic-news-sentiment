@@ -68,8 +68,15 @@ def main(data_path: str):
     df_train, df_val, df_test = prepare_splits(df, DATA_CFG)
 
     # ── 2. Build DataLoaders ─────────────────────────────────────────
-    train_loader, val_loader, test_loader = make_loaders(
-        df_train, df_val, df_test, DATA_CFG, MODEL_CFG, TRAIN_CFG
+    bl_tokenizer = AutoTokenizer.from_pretrained(MODEL_CFG.baseline_model_name)
+    ft_tokenizer = AutoTokenizer.from_pretrained(MODEL_CFG.model_name)
+    bl_train_loader, bl_val_loader, bl_test_loader = make_loaders(
+        df_train, df_val, df_test, DATA_CFG, MODEL_CFG, TRAIN_CFG,
+        tokenizer=bl_tokenizer,
+    )
+    ft_train_loader, ft_val_loader, ft_test_loader = make_loaders(
+        df_train, df_val, df_test, DATA_CFG, MODEL_CFG, TRAIN_CFG,
+        tokenizer=ft_tokenizer,
     )
 
     # ── 3. Loss function (shared by both models) ─────────────────────
@@ -84,15 +91,15 @@ def main(data_path: str):
     baseline_trainer = Trainer(
         model=baseline,
         loss_fn=loss_fn,
-        train_loader=train_loader,
-        val_loader=val_loader,
+        train_loader=bl_train_loader,
+        val_loader=bl_val_loader,
         cfg=TRAIN_CFG,
         model_name="baseline_finbert",
     )
 
     # After building train_loader
     # Grab one batch to inspect token IDs
-    sample_batch = next(iter(train_loader))
+    sample_batch = next(iter(bl_train_loader))
     max_id = sample_batch["input_ids"].max().item()
     print(f"Max token ID in sample batch: {max_id}")
 
@@ -119,8 +126,8 @@ def main(data_path: str):
     #ft_trainer = Trainer(
     #   model=finetune,
     #    loss_fn=loss_fn,
-    #    train_loader=train_loader,
-    #    val_loader=val_loader,
+    #    train_loader=ft_train_loader,
+    #    val_loader=ft_val_loader,
     #    cfg=ft_cfg,
     #    model_name="modern_finbert_large",
     #)
@@ -136,8 +143,8 @@ def main(data_path: str):
     # ── 6. Threshold tuning on val set ───────────────────────────────
     print("\n[main] Tuning thresholds on validation set...")
 
-    bl_val_probs, val_targets = collect_predictions(baseline, val_loader, TRAIN_CFG.device)
-    ft_val_probs, _           = collect_predictions(finetune,  val_loader, TRAIN_CFG.device)
+    bl_val_probs, val_targets = collect_predictions(baseline, bl_val_loader, TRAIN_CFG.device)
+    ft_val_probs, _           = collect_predictions(finetune, ft_val_loader, TRAIN_CFG.device)
 
     bl_thresholds = tune_thresholds(bl_val_probs, val_targets,
                                     TRAIN_CFG.threshold_search, DATA_CFG.aspect_cols)
@@ -147,8 +154,8 @@ def main(data_path: str):
     # ── 7. Final evaluation on TEST set ─────────────────────────────
     print("\n[main] Evaluating on test set...")
 
-    bl_test_probs, test_targets = collect_predictions(baseline, test_loader, TRAIN_CFG.device)
-    ft_test_probs, _            = collect_predictions(finetune,  test_loader, TRAIN_CFG.device)
+    bl_test_probs, test_targets = collect_predictions(baseline, bl_test_loader, TRAIN_CFG.device)
+    ft_test_probs, _            = collect_predictions(finetune, ft_test_loader, TRAIN_CFG.device)
 
     bl_results = evaluate(bl_test_probs, test_targets,
                           thresholds=bl_thresholds,

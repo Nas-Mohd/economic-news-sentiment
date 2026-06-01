@@ -191,9 +191,11 @@ def make_loaders(
     cfg_data:  DataConfig,
     cfg_model: ModelConfig,
     cfg_train,
+    tokenizer = None,
 ) -> Tuple[DataLoader, DataLoader, DataLoader]:
 
-    tokenizer = AutoTokenizer.from_pretrained(cfg_model.model_name)
+    if tokenizer is None:    # ← and this
+        tokenizer = AutoTokenizer.from_pretrained(cfg_model.model_name)
 
     train_ds = AspectDataset(df_train, tokenizer, cfg_data, cfg_model)
     val_ds   = AspectDataset(df_val,   tokenizer, cfg_data, cfg_model)
