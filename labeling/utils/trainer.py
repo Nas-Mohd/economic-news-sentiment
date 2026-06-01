@@ -77,7 +77,10 @@ class Trainer:
         self.model_name   = model_name
         self.log: List[Dict] = []
 
-        self.scaler = GradScaler(enabled=cfg.fp16)
+        # Use fp16_finetune flag if present, fall back to fp16
+        use_fp16 = getattr(cfg, "fp16_finetune", cfg.fp16)
+        self.scaler = GradScaler(enabled=use_fp16)
+        self._autocast_enabled = use_fp16
 
     # ─────────────────────────────────────────────────────────────────
     # Public entry point
@@ -196,7 +199,7 @@ class Trainer:
 
             optimizer.zero_grad()
 
-            with autocast(device_type='cuda', enabled=self.cfg.fp16):
+            with autocast(device_type='cuda', enabled=self._autocast_enabled):
                 logits = self.model(input_ids, attention_mask)
                 loss   = self.loss_fn(logits, labels, mask)
 
@@ -234,7 +237,7 @@ class Trainer:
             if token_type_ids is not None:
                 token_type_ids = token_type_ids.to(self.cfg.device)
 
-            with autocast(device_type='cuda', enabled=self.cfg.fp16):
+            with autocast(device_type='cuda', enabled=self._autocast_enabled):
                 logits = self.model(input_ids, attention_mask)
                 loss   = self.loss_fn(logits, labels, mask)
 

@@ -82,7 +82,8 @@ class TrainConfig:
     ])
 
     device: str = "cuda" if torch.cuda.is_available() else "cpu"
-    fp16: bool = True             # mixed precision — disable if no GPU
+    fp16: bool = True             # used by baseline (FinBERT)
+    fp16_finetune: bool = False   # ModernBERT: cast to fp32 instead
     save_best_only: bool = True
     log_every_n_steps: int = 50
 

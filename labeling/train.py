@@ -111,14 +111,16 @@ def main(data_path: str):
     print("\n" + "█" * 60)
     print("  FINE-TUNE: Modern-FinBERT-large")
     print("█" * 60)
-
+    import copy
+    ft_cfg = copy.copy(TRAIN_CFG)
+    ft_cfg.fp16_finetune = False
     finetune = AspectClassifier(MODEL_CFG)
     ft_trainer = Trainer(
         model=finetune,
         loss_fn=loss_fn,
         train_loader=train_loader,
         val_loader=val_loader,
-        cfg=TRAIN_CFG,
+        cfg=ft_cfg,
         model_name="modern_finbert_large",
     )
     finetune = ft_trainer.fit()

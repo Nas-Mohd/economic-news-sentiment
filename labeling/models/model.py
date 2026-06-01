@@ -55,6 +55,7 @@ class AspectClassifier(nn.Module):
 
         # Load backbone weights only (ignore the sentiment classifier head)
         self.backbone = AutoModel.from_pretrained(cfg.model_name)
+        self.backbone = self.backbone.float() 
         hidden_size = self.backbone.config.hidden_size
 
         self.head = MultiLabelHead(hidden_size, cfg.num_labels, cfg.dropout)
