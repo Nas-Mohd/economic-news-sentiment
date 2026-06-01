@@ -143,7 +143,7 @@ class BaselineClassifier(nn.Module):
         self.head = MultiLabelHead(hidden_size, cfg.num_labels, cfg.dropout)
 
     def forward(self, input_ids, attention_mask, token_type_ids = None) -> torch.Tensor:
-        out = self.backbone(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids,)
+        out = self.backbone(input_ids=input_ids, attention_mask=attention_mask,)
         cls = out.last_hidden_state[:, 0, :]
         return self.head(cls)
 
