@@ -24,7 +24,8 @@ from config import DataConfig, ModelConfig
 
 def clean_labels(df: pd.DataFrame, cfg: DataConfig) -> pd.DataFrame:
     df = df.copy()
-
+    import matplotlib.pyplot as plt
+    df["Fiscal_Government"].hist(bins=20)
     # Pass A — zero out all-negative rows
     if cfg.zero_out_all_negative:
         all_neg = (df[cfg.aspect_cols] < 0.5).all(axis=1)
