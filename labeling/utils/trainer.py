@@ -196,7 +196,7 @@ class Trainer:
             optimizer.zero_grad()
 
             with autocast(enabled=self.cfg.fp16):
-                logits = self.model(input_ids, attention_mask, token_type_ids)
+                logits = self.model(input_ids, attention_mask)
                 loss   = self.loss_fn(logits, labels, mask)
 
             self.scaler.scale(loss).backward()
@@ -234,7 +234,7 @@ class Trainer:
                 token_type_ids = token_type_ids.to(self.cfg.device)
 
             with autocast(enabled=self.cfg.fp16):
-                logits = self.model(input_ids, attention_mask, token_type_ids)
+                logits = self.model(input_ids, attention_mask)
                 loss   = self.loss_fn(logits, labels, mask)
 
             total_loss += loss.item()

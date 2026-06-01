@@ -176,7 +176,7 @@ class AspectDataset(Dataset):
             "attention_mask": attention_mask,
             "labels":         self.labels[idx],
             "mask":           self.masks[idx],
-            "token_type_ids":   token_type_ids,
+            #"token_type_ids":   token_type_ids,
         }
 
 
