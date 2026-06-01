@@ -106,6 +106,7 @@ def main(data_path: str):
         print(f"WARNING: token ID {max_id} exceeds vocab size {tokenizer.vocab_size}!")
     else:
         print("OK: max token ID within vocab range.")
+    baseline = baseline_trainer.fit() 
 
     # ── 5. Train FINE-TUNE ───────────────────────────────────────────
     print("\n" + "█" * 60)
@@ -114,16 +115,23 @@ def main(data_path: str):
     import copy
     ft_cfg = copy.copy(TRAIN_CFG)
     ft_cfg.fp16_finetune = False
+    #finetune = AspectClassifier(MODEL_CFG)
+    #ft_trainer = Trainer(
+    #   model=finetune,
+    #    loss_fn=loss_fn,
+    #    train_loader=train_loader,
+    #    val_loader=val_loader,
+    #    cfg=ft_cfg,
+    #    model_name="modern_finbert_large",
+    #)
+    #finetune = ft_trainer.fit()
+
     finetune = AspectClassifier(MODEL_CFG)
-    ft_trainer = Trainer(
-        model=finetune,
-        loss_fn=loss_fn,
-        train_loader=train_loader,
-        val_loader=val_loader,
-        cfg=ft_cfg,
-        model_name="modern_finbert_large",
-    )
-    finetune = ft_trainer.fit()
+    checkpoint_path = "/content/drive/MyDrive/finbert_outputs/modern_finbert_large_best.pt"
+    finetune.load_state_dict(torch.load(checkpoint_path, map_location=TRAIN_CFG.device))
+    finetune = finetune.to(TRAIN_CFG.device)
+    finetune.eval()
+    print(f"[main] Loaded checkpoint from {checkpoint_path}")
 
     # ── 6. Threshold tuning on val set ───────────────────────────────
     print("\n[main] Tuning thresholds on validation set...")
