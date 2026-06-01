@@ -177,7 +177,11 @@ def main(data_path: str):
 
     # ── 9. Save training logs ────────────────────────────────────────
     import json
-    for trainer, name in [(baseline_trainer, "baseline"), (ft_trainer, "finetune")]:
+    log_pairs = [(baseline_trainer, "baseline")]
+    if 'ft_trainer' in dir():   # only save if we actually trained
+        log_pairs.append((ft_trainer, "finetune"))
+
+    for trainer, name in log_pairs:
         log_path = f"{TRAIN_CFG.output_dir}/{name}_training_log.json"
         with open(log_path, "w") as f:
             json.dump(trainer.log, f, indent=2)
