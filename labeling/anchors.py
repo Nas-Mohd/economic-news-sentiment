@@ -124,7 +124,34 @@ FISCAL_ANCHORS = [
     "Tax cuts introduced this year aim to boost disposable income and corporate reinvestment rates.",
     "Parliament debated raising corporate windfall taxes and expanding the scope of the consumption tax.",
     "The inland revenue board stepped up enforcement to curb tax evasion and broaden the national revenue base.",
+    # --- Fiscal Transfers & Social Protection ---
+    "The government expanded its cash transfer programme, increasing monthly payouts to low-income households under the national aid scheme.",
+    "Budget allocations for social safety nets were raised to cushion vulnerable groups from rising cost of living pressures.",
+    "The welfare ministry announced an upward revision to the minimum household assistance threshold for aid eligibility.",
 
+    # --- Government Revenue & Fiscal Balance ---
+    "The treasury reported a narrowing of the fiscal deficit as tax collection exceeded projections amid stronger corporate earnings.",
+    "Dividend income from state-owned enterprises contributed significantly to government revenue, partially offsetting expenditure growth.",
+    "The government recorded a primary surplus for the first time in five years, driven by improved tax compliance and spending discipline.",
+
+    # --- Public Investment & Development Spending ---
+    "The government earmarked funds for large-scale infrastructure development under the national development plan.",
+    "State capital expenditure on public transportation and utilities was increased to stimulate economic activity.",
+    "The administration fast-tracked approval for publicly funded industrial zones and special economic corridors.",
+
+    # --- Regulatory & Policy Intervention ---
+    "New regulations mandating price controls on essential goods were introduced to protect consumers from supply-driven inflation.",
+    "The government issued directives capping profit margins for fuel distributors and essential commodity traders.",
+    "Authorities tightened compliance requirements for government procurement to reduce leakage in public spending.",
+
+    # --- Monetary-Fiscal Coordination ---
+    "The central bank cautioned that expansionary fiscal policy could complicate efforts to bring inflation back to target.",
+    "Policymakers discussed coordinating fiscal stimulus with monetary easing to support economic recovery without overheating.",
+
+    # --- Crisis Fiscal Response ---
+    "The government unveiled an economic rescue package worth billions to cushion businesses and workers from the impact of the crisis.",
+    "Emergency supplementary budgets were tabled in parliament to fund crisis relief measures and stabilise the economy.",
+    "The finance minister outlined contingency spending plans to address shortfalls in revenue caused by the external shock.",
     # --- Budgetary Frameworks & Deficits ---
     "The government outlined its revised budgetary framework, targeting a reduction in the fiscal deficit through streamlined public expenditures.",
     "The annual budget allocation prioritized healthcare, education, and rural development civil projects.",
