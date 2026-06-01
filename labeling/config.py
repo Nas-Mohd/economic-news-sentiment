@@ -30,7 +30,7 @@ class DataConfig:
     abstain_high: float = 0.55
     # Override per aspect — None means use the defaults above
     abstain_overrides: dict = field(default_factory=lambda: {
-        "Fiscal_Government": (0.35, 0.45),  # tighter upper bound → keep more positives
+        "Fiscal_Government": (0.35, 0.44),  # tighter upper bound → keep more positives
     })
     zero_out_all_negative: bool = True   # hard-zero confirmed off-domain rows
 
