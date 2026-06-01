@@ -26,6 +26,7 @@ import torch
 from config import DATA_CFG, MODEL_CFG, TRAIN_CFG
 from data.dataset import prepare_splits, make_loaders
 from models.model import AspectClassifier, BaselineClassifier
+from transformers import AutoTokenizer
 from utils.loss import build_loss_fn
 from utils.trainer import Trainer
 from utils.metrics import (
@@ -55,6 +56,8 @@ BertEmbeddings.forward = _safe_bert_embeddings_forward
 
 
 def main(data_path: str):
+    tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
+
     # ── 0. Load raw data ─────────────────────────────────────────────
     print(f"\n[main] Loading data from {data_path}")
     df = pd.read_csv(data_path)
@@ -97,7 +100,6 @@ def main(data_path: str):
     # You need to create the model first (or load the tokenizer separately).
     baseline = BaselineClassifier(MODEL_CFG)
     # Access the tokenizer from the model's backbone
-    tokenizer = baseline.backbone.tokenizer
     print(f"Tokenizer vocab size: {tokenizer.vocab_size}")
 
     if max_id >= tokenizer.vocab_size:
