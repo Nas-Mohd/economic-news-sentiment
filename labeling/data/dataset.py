@@ -23,13 +23,6 @@ from config import DataConfig, ModelConfig
 # ─────────────────────────────────────────────────────────────────────────────
 
 def clean_labels(df: pd.DataFrame, cfg: DataConfig) -> pd.DataFrame:
-    """
-    Two cleaning passes:
-      A) Hard-zero confirmed off-domain rows (all aspects below 0.5 threshold).
-         We validated manually that these are genuinely non-economic sentences.
-      B) Build an abstain mask (stored separately) so masked BCE can ignore
-         the [abstain_low, abstain_high] band during loss computation.
-    """
     df = df.copy()
 
     # Pass A — zero out all-negative rows
@@ -38,21 +31,27 @@ def clean_labels(df: pd.DataFrame, cfg: DataConfig) -> pd.DataFrame:
         df.loc[all_neg, cfg.aspect_cols] = 0.0
         print(f"[clean_labels] Zeroed {all_neg.sum()} off-domain rows")
 
-    # Pass B — abstain mask columns (1 = use in loss, 0 = ignore)
+    # Pass B — abstain mask with per-aspect breakdown
+    print(f"\n[clean_labels] Abstain zone ({cfg.abstain_low}, {cfg.abstain_high}) breakdown:")
+    print(f"  {'Aspect':<30} {'Total':>6}  {'Positive(>=0.5)':>15}  {'Abstain':>8}  {'Used':>6}  {'%Used':>6}")
+    print(f"  {'-'*75}")
+
+    total_abstain = 0
     for col in cfg.aspect_cols:
         mask_col = f"_mask_{col}"
-        in_abstain_zone = (
-            (df[col] > cfg.abstain_low) & (df[col] < cfg.abstain_high)
-        )
+        in_abstain_zone = (df[col] > cfg.abstain_low) & (df[col] < cfg.abstain_high)
         df[mask_col] = (~in_abstain_zone).astype(np.float32)
 
-    abstain_count = sum(
-        ((df[col] > cfg.abstain_low) & (df[col] < cfg.abstain_high)).sum()
-        for col in cfg.aspect_cols
-    )
-    print(f"[clean_labels] {abstain_count} aspect-labels masked as abstain "
-          f"(in [{cfg.abstain_low}, {cfg.abstain_high}])")
+        n_total   = len(df)
+        n_pos     = (df[col] >= 0.5).sum()
+        n_abstain = in_abstain_zone.sum()
+        n_used    = n_total - n_abstain
+        pct_used  = 100 * n_used / n_total
+        total_abstain += n_abstain
 
+        print(f"  {col:<30} {n_total:>6}  {n_pos:>15}  {n_abstain:>8}  {n_used:>6}  {pct_used:>5.1f}%")
+
+    print(f"\n[clean_labels] {total_abstain} total aspect-labels masked as abstain")
     return df
 
 
