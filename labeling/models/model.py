@@ -143,6 +143,9 @@ class BaselineClassifier(nn.Module):
         self.head = MultiLabelHead(hidden_size, cfg.num_labels, cfg.dropout)
 
     def forward(self, input_ids, attention_mask, token_type_ids = None) -> torch.Tensor:
+        if input_ids.size(1) > 512:
+            input_ids = input_ids[:, :512]
+            attention_mask = attention_mask[:, :512]
         out = self.backbone(input_ids=input_ids, attention_mask=attention_mask,)
         cls = out.last_hidden_state[:, 0, :]
         return self.head(cls)
