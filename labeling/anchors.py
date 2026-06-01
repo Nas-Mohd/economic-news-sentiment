@@ -1,7 +1,7 @@
 # anchors.py
 from typing import Dict, List
 
-SEMANTIC_THRESHOLD = 0.35
+SEMANTIC_THRESHOLD = 0.30
 
 
 # Economic news anchor sentences
@@ -107,6 +107,7 @@ TRADE_ANCHORS = [
     "The Malaysian ringgit fluctuated in volatile trading, gaining ground against the Singapore dollar and edging up against the US dollar in the regional currency market.",
     "The domestic currency experienced cross-border valuation shifts, strengthening or weakening against major regional trading partner exchange rates in the global FX spot market.",
     "asia increased imports",
+    "Geopolitical threats and military posturing targeting strategic maritime chokepoints jeopardize regional infrastructure corridors and disrupt international commercial networks",
     "The country operates as a net energy exporter, shielding its trade balance from global fossil fuel and crude oil market shocks.",
     "Changes in regional energy production and hydrocarbon export volumes heavily influence macroeconomic stability and commodity revenues.",
     "trade war between them continues",

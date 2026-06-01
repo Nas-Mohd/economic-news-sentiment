@@ -337,7 +337,7 @@ def lf_external_exclusion_clash(x):
     like domestic minimum wages, national retail sales, or localized infrastructure.
     """
     has_external = contains_keywords(x.text, KEYWORDS['trade_external']) or contains_keywords(x.text, KEYWORDS['energy_commodities'])
-    has_local_heavy = contains_keywords(x.text, ["minimum wage", "retail sales", "payroll tax", "infrastructure"])
+    has_local_heavy = contains_keywords(x.text, ["minimum wage", "retail sales", "payroll tax"])
 
     if has_local_heavy and not has_external:
         return ABSENT
