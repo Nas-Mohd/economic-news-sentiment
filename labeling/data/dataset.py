@@ -161,12 +161,22 @@ class AspectDataset(Dataset):
             truncation=True,
             return_tensors="pt",
         )
+        # Extract base features safely
+        input_ids = enc["input_ids"].squeeze(0)
+        attention_mask = enc["attention_mask"].squeeze(0)
+        
+        # Safe fallback if 'token_type_ids' is missing from the tokenizer output
+        token_type_ids = enc.get(
+            "token_type_ids", 
+            torch.zeros_like(input_ids)
+        ).squeeze(0)
+
         return {
-            "input_ids":      enc["input_ids"].squeeze(0),
-            "attention_mask": enc["attention_mask"].squeeze(0),
+            "input_ids":      input_ids,
+            "attention_mask": attention_mask,
             "labels":         self.labels[idx],
             "mask":           self.masks[idx],
-            "token_type_ids":   enc["token_type_ids"].squeeze(0),
+            "token_type_ids":   token_type_ids,
         }
 
 
