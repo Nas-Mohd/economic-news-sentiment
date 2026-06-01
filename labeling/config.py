@@ -28,6 +28,10 @@ class DataConfig:
     # Soft-label cleaning
     abstain_low:  float = 0.35   # mask BCE for labels in (abstain_low, abstain_high)
     abstain_high: float = 0.55
+    # Override per aspect — None means use the defaults above
+    abstain_overrides: dict = field(default_factory=lambda: {
+        "Fiscal_Government": (0.35, 0.45),  # tighter upper bound → keep more positives
+    })
     zero_out_all_negative: bool = True   # hard-zero confirmed off-domain rows
 
 
@@ -68,7 +72,7 @@ class TrainConfig:
         1.92,   # Inflation_Prices
         0.76,   # Real_Economic_Activity
         1.55,   # Labor_Consumption
-        8.00,   # Fiscal_Government  (capped from ~14.4)
+        12.00,   # Fiscal_Government  (capped from ~14.4)
         1.28,   # External_Sector
     ])
 

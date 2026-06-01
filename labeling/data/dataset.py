@@ -37,9 +37,11 @@ def clean_labels(df: pd.DataFrame, cfg: DataConfig) -> pd.DataFrame:
     print(f"  {'-'*75}")
 
     total_abstain = 0
+    overrides = getattr(cfg, 'abstain_overrides', {})
     for col in cfg.aspect_cols:
         mask_col = f"_mask_{col}"
-        in_abstain_zone = (df[col] > cfg.abstain_low) & (df[col] < cfg.abstain_high)
+        low, high = overrides.get(col, (cfg.abstain_low, cfg.abstain_high))
+        in_abstain_zone = (df[col] > low) & (df[col] < high)
         df[mask_col] = (~in_abstain_zone).astype(np.float32)
 
         n_total   = len(df)
