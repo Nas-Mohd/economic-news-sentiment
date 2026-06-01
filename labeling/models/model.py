@@ -146,7 +146,7 @@ class BaselineClassifier(nn.Module):
         if input_ids.size(1) > 512:
             input_ids = input_ids[:, :512]
             attention_mask = attention_mask[:, :512]
-        out = self.backbone(input_ids=input_ids, attention_mask=attention_mask,token_type_ids=token_type_ids)
+        out = self.backbone(input_ids=input_ids, attention_mask=attention_mask)
         cls = out.last_hidden_state[:, 0, :]
         return self.head(cls)
 
