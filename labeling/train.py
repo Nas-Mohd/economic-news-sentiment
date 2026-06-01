@@ -86,7 +86,24 @@ def main(data_path: str):
         cfg=TRAIN_CFG,
         model_name="baseline_finbert",
     )
-    baseline = baseline_trainer.fit()
+
+    # After building train_loader
+    # Grab one batch to inspect token IDs
+    sample_batch = next(iter(train_loader))
+    max_id = sample_batch["input_ids"].max().item()
+    print(f"Max token ID in sample batch: {max_id}")
+
+    # Now get the vocab size from the tokenizer used by the model.
+    # You need to create the model first (or load the tokenizer separately).
+    baseline = BaselineClassifier(MODEL_CFG)
+    # Access the tokenizer from the model's backbone
+    tokenizer = baseline.backbone.tokenizer
+    print(f"Tokenizer vocab size: {tokenizer.vocab_size}")
+
+    if max_id >= tokenizer.vocab_size:
+        print(f"WARNING: token ID {max_id} exceeds vocab size {tokenizer.vocab_size}!")
+    else:
+        print("OK: max token ID within vocab range.")
 
     # ── 5. Train FINE-TUNE ───────────────────────────────────────────
     print("\n" + "█" * 60)
