@@ -37,6 +37,23 @@ from utils.metrics import (
 )
 
 
+import torch
+from transformers.models.bert.modeling_bert import BertEmbeddings
+
+# Save original forward
+_original_bert_embeddings_forward = BertEmbeddings.forward
+
+def _safe_bert_embeddings_forward(self, input_ids=None, token_type_ids=None, position_ids=None, inputs_embeds=None, past_key_values_length=0):
+    # Clamp token_type_ids to 0 or 1 to prevent index out of range
+    if token_type_ids is not None:
+        token_type_ids = torch.clamp(token_type_ids, 0, 1).long()
+    return _original_bert_embeddings_forward(
+        self, input_ids, token_type_ids, position_ids, inputs_embeds, past_key_values_length
+    )
+
+BertEmbeddings.forward = _safe_bert_embeddings_forward
+
+
 def main(data_path: str):
     # ── 0. Load raw data ─────────────────────────────────────────────
     print(f"\n[main] Loading data from {data_path}")
