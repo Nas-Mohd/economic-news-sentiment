@@ -113,7 +113,7 @@ def lf_is_not_economic_news(x):
     
     # 5. Gatekeeper Logic: If it doesn't match a single anchor, rule it out.
     # We use torch.any() for optimized GPU/CPU tensor evaluation
-    if not torch.any(similarities >= (SEMANTIC_THRESHOLD*0.75)):
+    if not torch.any(similarities >= SEMANTIC_THRESHOLD):
         return ABSENT
         
     return ABSTAIN
