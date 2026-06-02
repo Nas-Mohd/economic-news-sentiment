@@ -1,7 +1,7 @@
 # anchors.py
 from typing import Dict, List
 
-SEMANTIC_THRESHOLD = 0.65
+SEMANTIC_THRESHOLD = 0.55
 
 
 # Economic news anchor sentences
