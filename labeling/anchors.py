@@ -37,6 +37,10 @@ MONETARY_ANCHORS = [
     "benchmark interest rate hike",
     "Sovereign nations utilizing international emergency credit lines must settle outstanding central banking obligations and institutional stabilization loans to restore external financial credibility.",
     "liquidity tightening measures",
+    "The monetary policy committee emphasized data-dependent decision making.",
+    "Central bank officials signaled caution regarding future policy adjustments.",
+    "Meeting minutes revealed concerns about inflation persistence.",
+    "The governor highlighted risks to the inflation outlook during the press conference.",
     "The monetary policy committee signaled a potential reduction in reserve requirements to stimulate credit expansion."
 ]
 # Inflation
@@ -46,7 +50,20 @@ INFLATION_ANCHORS = [
     "Global supply chain shocks and shipping network disruptions are driving up raw material commodity input prices.",
     "As skyrocketing diesel costs ripple through the supply chain, economists warn that unmitigated fuel hikes are stoking broader inflation, leaving both commercial enterprises and household consumers vulnerable to a sharp increase in the cost of living.",
     "prices continue to climb year-on-year",
+    "Inflation slowed considerably compared with the previous quarter.",
+    "Price growth moderated as supply conditions improved.",
+    "Consumer prices remained largely stable throughout the reporting period.",
+    "Deflationary pressures emerged amid weakening demand.",
+    "The pace of price increases has begun to ease.",
+    "Rising energy prices are placing upward pressure on overall consumer inflation.",
+    "Electricity tariffs and fuel costs contributed significantly to the latest inflation reading.",
+    "Oil price increases are feeding through into transportation and production costs.",
+    "Energy-driven inflation remains a key concern for policymakers.",
     "inflationary pressures remain elevated",
+    "Food prices rose sharply due to adverse weather conditions affecting agricultural output.",
+    "Households are spending a larger share of their income on groceries as food inflation persists.",
+    "Higher agricultural commodity prices are contributing to inflationary pressures.",
+    "Retail food costs continue to increase across major urban centers.",
     "Producer price indices ticked upward, indicating that rising raw material costs are beginning to pass through to wholesale market pricing and end-consumer goods."
 ]
 # Economic Growth : GDP CPI Recession
@@ -77,6 +94,16 @@ CONSUMER_ANCHORS = [
     "household demand remains resilient",
     "more people are buying goods",
     "retail sales rose strongly this month",
+    "consumer spending increased",
+    "household expenditure remained strong",
+    "private consumption contributed to GDP growth",
+    "retail sales rose strongly",
+    "consumer demand remained robust",
+    "households reduced discretionary spending",
+    "consumer confidence improved",
+    "consumer confidence deteriorated",
+    "household purchasing activity strengthened",
+    "weaker consumption weighed on economic growth",
     'Private consumption expenditures showed robust quarter-on-quarter acceleration, outstripping conservative retail forecasts'
 ]
  # Business Activity: Investments
@@ -167,6 +194,14 @@ ENERGY_COMMODITIES_ANCHORS = [
     "As global coal mining hubs enter peak production season, maritime commodity imports are expected to climb sharply throughout the second quarter."
     "natural gas prices spiked during winter demand",
     "electricity and household utility bills",
+    "crude oil prices rose following supply disruptions",
+    "natural gas prices spiked during winter demand",
+    "electricity and household utility bills increased significantly",
+    "agricultural commodity prices increased due to poor harvest conditions",
+    "copper prices increased on expectations of stronger industrial activity",
+    "iron ore demand strengthened due to construction sector growth",
+    "renewable energy investment accelerated across the region",
+    "coal production increased to meet rising electricity demand",
     "Industrial metals like copper and iron ore faced downward price pressure as global warehouse inventories reached multi-month highs"
 ]
 # Banking and Credit: Loan rates, mortgage, credit
@@ -179,7 +214,17 @@ BANKING_CREDIT_ANCHORS = [
 CORPORATE_CLIMATE_ANCHORS = [
     "Inbound foreign direct investment surged as international conglomerates finalized cross-border capital allocations for regional infrastructure projects.",
     "firms expanded operations into new markets",
-    "capital expenditure plans were delayed"
+    "capital expenditure plans were delayed",
+    "business investment increased amid improving economic conditions",
+    "foreign direct investment inflows exceeded expectations",
+    "companies announced significant expansion projects",
+    "business sentiment improved as market conditions stabilized",
+    "firms increased spending on productive assets",
+    "companies postponed investment decisions",
+    "capital expenditure plans were scaled back",
+    "uncertainty weighed on private sector investment decisions",
+    "corporate confidence strengthened during the quarter",
+    "private sector investment supported economic growth"
 ]
 
 # --- Build dictionary of string anchors (optional, keep for reference) ---
