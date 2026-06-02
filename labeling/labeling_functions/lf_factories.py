@@ -72,3 +72,17 @@ def make_semantic_lf(category_name, anchors, embedder, threshold=0.5):
 
     lf_semantic.name = f"lf_{category_name}_semantic"
     return lf_semantic
+
+def make_strict_semantic_lf(category_name, anchors, embedder, threshold=0.5):
+    cache_embeddings = make_preprocessor(embedder)
+
+    @labeling_function(pre=[cache_embeddings])
+    def lf_semantic(x):
+        if any(util.cos_sim(x.embedding, anchor) > (threshold*1.25) for anchor in anchors[category_name]):
+            return PRESENT
+        elif all(util.cos_sim(x.embedding, anchor) < 0.05 for anchor in anchors[category_name]):
+            return ABSENT
+        return ABSTAIN
+
+    lf_semantic.name = f"lf_{category_name}_semantic"
+    return lf_semantic
