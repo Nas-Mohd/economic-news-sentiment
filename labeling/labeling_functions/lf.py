@@ -17,7 +17,7 @@ ABSTAIN = -1
 
 
 lemmatizer = WordNetLemmatizer()
-embedder = SentenceTransformer("all-MiniLM-L6-v2")
+embedder = SentenceTransformer("FinLang/finance-embeddings-investopedia")
 economic_anchor_embeddings = []
 for anchor in ANCHORS['economic_news']:
     economic_anchor_embeddings.append(embedder.encode(anchor, convert_to_tensor=True))
