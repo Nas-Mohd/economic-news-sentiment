@@ -104,9 +104,8 @@ FINANCIAL_ANCHORS = [
 # Trade : Imports Exports
 TRADE_ANCHORS = [
     "palm oil exports increased",
-    "The Malaysian ringgit fluctuated in volatile trading, gaining ground against the Singapore dollar and edging up against the US dollar in the regional currency market.",
     "The domestic currency experienced cross-border valuation shifts, strengthening or weakening against major regional trading partner exchange rates in the global FX spot market.",
-    "As part of the continent's broader strategy, certain nations such Malaysia and Philippines increased their imports these years",
+    "As part of a broader regional trade strategy, several emerging market economies significantly increased their inbound import volumes of foreign goods over the tracking period.",
     "Geopolitical threats and military posturing targeting strategic maritime chokepoints jeopardize regional infrastructure corridors and disrupt international commercial networks",
     "The country operates as a net energy exporter, shielding its trade balance from global fossil fuel and crude oil market shocks.",
     "Changes in regional energy production and hydrocarbon export volumes heavily influence macroeconomic stability and commodity revenues.",
@@ -164,7 +163,7 @@ FISCAL_ANCHORS = [
 ]
  # Energy & Commodities; Oil, Solar, Energy, Metal
 ENERGY_COMMODITIES_ANCHORS = [
-    "Brazilian soy exports are projected to surge next month, boosting global port activity.",
+    "Regional agricultural commodity export volumes are projected to surge, boosting international maritime shipping traffic and cross-border commercial port activity",
     "As global coal mining hubs enter peak production season, maritime commodity imports are expected to climb sharply throughout the second quarter."
     "natural gas prices spiked during winter demand",
     "electricity and household utility bills",
