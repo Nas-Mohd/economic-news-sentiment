@@ -3,57 +3,73 @@ import nltk
 import os
 import sys
 
-# Download the sentence tokenizer models quietly
 try:
     nltk.data.find('tokenizers/punkt_tab')
 except LookupError:
     nltk.download('punkt_tab', quiet=True)
 
-def split_csv_to_sentences(input_filename, output_filename, text_col="text"):
-    print(f"📋 Loading raw dataset: {input_filename}")
-    
-    if not os.path.exists(input_filename):
-        print(f"❌ Error: Could not find '{input_filename}' in this directory.")
+def split_csv_to_sentences(input_files, output_filename, text_col="text"):
+    all_dfs = []
+
+    for f in input_files:
+        if not os.path.exists(f):
+            print(f"⚠️  Skipping '{f}' — file not found.")
+            continue
+        print(f"📋 Loading: {f}")
+        df = pd.read_csv(f)
+        all_dfs.append(df)
+
+    if not all_dfs:
+        print("❌ No valid input files found. Exiting.")
         sys.exit(1)
-        
-    df = pd.read_csv(input_filename)
-    
-    # Drop rows that don't have text
-    df = df.dropna(subset=[text_col])
-    
+
+    # Combine all files
+    combined = pd.concat(all_dfs, ignore_index=True)
+    print(f"\n📦 Combined: {len(combined)} total rows across {len(all_dfs)} files")
+
+    # Deduplicate on URL first (same article from different files), then on title
+    before = len(combined)
+    combined = combined.drop_duplicates(subset=['url'], keep='first')
+    combined = combined.drop_duplicates(subset=['title'], keep='first')
+    print(f"🧹 Removed {before - len(combined)} duplicate articles → {len(combined)} unique articles")
+
+    # Drop rows with no text
+    combined = combined.dropna(subset=[text_col])
+
     sentence_rows = []
-    
-    print("✂️ Splitting text columns into clean macroeconomic sentences...")
-    for idx, row in df.iterrows():
+    print("\n✂️  Splitting text into sentences...")
+
+    for idx, row in combined.iterrows():
         raw_text = str(row[text_col]).strip()
-        
-        # Clean up double line breaks often caused by web scrapers
         cleaned_text = " ".join(raw_text.split())
-        
-        # Use NLTK to intelligently tokenize text into individual sentences
         sentences = nltk.tokenize.sent_tokenize(cleaned_text)
-        
+
         for sentence in sentences:
             sentence = sentence.strip()
-            # Filter out empty snippets or weird single characters
-            if len(sentence) > 10:  
-                # Duplicate the metadata row structure
+            if len(sentence) > 10:
                 new_row = row.to_dict()
-                # Replace the entire text wall with just this individual sentence
                 new_row[text_col] = sentence
                 sentence_rows.append(new_row)
-                
-    # Re-compile into a flat structural DataFrame
+
     df_sentences = pd.DataFrame(sentence_rows)
-    
+
+    # Deduplicate on sentence level too (same sentence appearing in multiple articles)
+    before_sent = len(df_sentences)
+    df_sentences = df_sentences.drop_duplicates(subset=[text_col], keep='first')
+    print(f"🧹 Removed {before_sent - len(df_sentences)} duplicate sentences")
+
     df_sentences.to_csv(output_filename, index=False, encoding='utf-8')
-    print(f"🎉 Success! Expanded {len(df)} articles into {len(df_sentences)} independent sentences.")
-    print(f"💾 Staging file saved to: {output_filename}\n")
+    print(f"\n🎉 Expanded {len(combined)} articles into {len(df_sentences)} unique sentences.")
+    print(f"💾 Saved to: {output_filename}")
+
 
 if __name__ == "__main__":
-    # Configure your workspace targets
-    RAW_INPUT = "malaysian_economic_news_1000.csv"
-    STAGED_OUTPUT = "staged_economic_sentences.csv"
+    INPUT_FILES = [
+        "malaysian_economic_new_1_year_1000.csv",
+        "malaysian_economic_news_1000_1.csv",
+        "economic_news_1000.csv",
+    ]
+    OUTPUT_FILE = "staged_new_economic_sentences.csv"
     TEXT_COLUMN = "text"
-    
-    split_csv_to_sentences(RAW_INPUT, STAGED_OUTPUT, text_col=TEXT_COLUMN)
+
+    split_csv_to_sentences(INPUT_FILES, OUTPUT_FILE, text_col=TEXT_COLUMN)

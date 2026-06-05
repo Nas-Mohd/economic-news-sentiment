@@ -7,6 +7,8 @@ from openai import OpenAI
 from pydantic import BaseModel, Field
 from typing import Literal
 from tqdm import tqdm
+from dotenv import load_dotenv
+load_dotenv()
 
 # =====================================================================
 # 1. Pipeline Telemetry Configuration
@@ -38,7 +40,7 @@ class FinancialAspectSentimentAnnotation(BaseModel):
 # =====================================================================
 # 3. Processing Core Engine
 # =====================================================================
-def annotate_absa_dataset(df, checkpoint_file="absa_checkpoint.csv", model_name="meta-llama/llama-3-8b-instruct"):
+def annotate_absa_dataset(df, checkpoint_file="absa_new_checkpoint.csv", model_name="meta-llama/llama-3-8b-instruct"):
     
     if not os.environ.get("OPENROUTER_API_KEY"):
         logger.critical("❌ Missing Environment Variable: Please set your 'OPENROUTER_API_KEY' before running.")
@@ -191,9 +193,9 @@ def annotate_absa_dataset(df, checkpoint_file="absa_checkpoint.csv", model_name=
 # 4. Ingestion and Execution Execution Block
 # =====================================================================
 if __name__ == "__main__":
-    input_file = "finbert_training_ready.csv" 
-    checkpoint_file = "absa_checkpoint.csv"
-    output_file = "finbert_absa_training_ready.csv"
+    input_file = "staged_new_economic_sentences.csv" 
+    checkpoint_file = "absa_new_checkpoint.csv"
+    output_file = "finbert_absa_training_ready_1.csv"
 
     try:
         # Load raw dataset

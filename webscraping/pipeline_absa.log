@@ -3533,3 +3533,61 @@ llm_justification
 2026-06-03 23:16:21,887 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
 2026-06-03 23:16:23,309 [INFO] 🎉 Complete! Processed training ready file generated: finbert_absa_training_ready.csv
 2026-06-03 23:16:23,310 [INFO] 🎉 Complete! CHECKKKd: absa_checkpoint.csv
+2026-06-05 08:27:11,611 [INFO] 📊 Dataset sanitized successfully. Rows to process: 34821
+2026-06-05 08:27:11,612 [CRITICAL] ❌ Missing Environment Variable: Please set your 'OPENROUTER_API_KEY' before running.
+2026-06-05 08:27:11,612 [CRITICAL] 💥 Runtime Error: OPENROUTER_API_KEY environment variable is missing.
+Traceback (most recent call last):
+  File "/Users/anasmohammad/Desktop/economic-news-sentiment/webscraping/run_absa_annotations.py", line 208, in <module>
+    annotate_absa_dataset(df_cleaned, checkpoint_file=checkpoint_file)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anasmohammad/Desktop/economic-news-sentiment/webscraping/run_absa_annotations.py", line 45, in annotate_absa_dataset
+    raise ValueError("OPENROUTER_API_KEY environment variable is missing.")
+ValueError: OPENROUTER_API_KEY environment variable is missing.
+2026-06-05 08:28:22,758 [INFO] 📊 Dataset sanitized successfully. Rows to process: 34821
+2026-06-05 08:28:22,759 [CRITICAL] ❌ Missing Environment Variable: Please set your 'OPENROUTER_API_KEY' before running.
+2026-06-05 08:28:22,759 [CRITICAL] 💥 Runtime Error: OPENROUTER_API_KEY environment variable is missing.
+Traceback (most recent call last):
+  File "/Users/anasmohammad/Desktop/economic-news-sentiment/webscraping/run_absa_annotations.py", line 208, in <module>
+    annotate_absa_dataset(df_cleaned, checkpoint_file=checkpoint_file)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anasmohammad/Desktop/economic-news-sentiment/webscraping/run_absa_annotations.py", line 45, in annotate_absa_dataset
+    raise ValueError("OPENROUTER_API_KEY environment variable is missing.")
+ValueError: OPENROUTER_API_KEY environment variable is missing.
+2026-06-05 08:29:31,751 [INFO] 📊 Dataset sanitized successfully. Rows to process: 34821
+2026-06-05 08:29:31,751 [CRITICAL] ❌ Missing Environment Variable: Please set your 'OPENROUTER_API_KEY' before running.
+2026-06-05 08:29:31,751 [CRITICAL] 💥 Runtime Error: OPENROUTER_API_KEY environment variable is missing.
+Traceback (most recent call last):
+  File "/Users/anasmohammad/Desktop/economic-news-sentiment/webscraping/run_absa_annotations.py", line 208, in <module>
+    annotate_absa_dataset(df_cleaned, checkpoint_file=checkpoint_file)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anasmohammad/Desktop/economic-news-sentiment/webscraping/run_absa_annotations.py", line 45, in annotate_absa_dataset
+    raise ValueError("OPENROUTER_API_KEY environment variable is missing.")
+ValueError: OPENROUTER_API_KEY environment variable is missing.
+2026-06-05 08:29:44,820 [INFO] 📊 Dataset sanitized successfully. Rows to process: 34821
+2026-06-05 08:29:44,820 [CRITICAL] ❌ Missing Environment Variable: Please set your 'OPENROUTER_API_KEY' before running.
+2026-06-05 08:29:44,820 [CRITICAL] 💥 Runtime Error: OPENROUTER_API_KEY environment variable is missing.
+Traceback (most recent call last):
+  File "/Users/anasmohammad/Desktop/economic-news-sentiment/webscraping/run_absa_annotations.py", line 208, in <module>
+    annotate_absa_dataset(df_cleaned, checkpoint_file=checkpoint_file)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anasmohammad/Desktop/economic-news-sentiment/webscraping/run_absa_annotations.py", line 45, in annotate_absa_dataset
+    raise ValueError("OPENROUTER_API_KEY environment variable is missing.")
+ValueError: OPENROUTER_API_KEY environment variable is missing.
+2026-06-05 08:30:24,239 [INFO] 📊 Dataset sanitized successfully. Rows to process: 34821
+2026-06-05 08:30:24,279 [INFO] 🆕 Initializing clean output schema baseline.
+2026-06-05 08:30:24,280 [INFO] 🚀 Streaming to OpenRouter -> 'meta-llama/llama-3-8b-instruct'...
+2026-06-05 08:30:26,233 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:28,326 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:30,215 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:32,972 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:35,178 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:37,172 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:42,770 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:45,819 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:49,560 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:51,691 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:53,574 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:56,831 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:30:59,187 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:31:00,620 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-05 08:31:01,852 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
