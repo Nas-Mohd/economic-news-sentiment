@@ -1,0 +1,17 @@
+2026-06-06 17:00:27,882 [CRITICAL] ❌ Missing Environment Variable: Please set your 'OPENROUTER_API_KEY' before running.
+2026-06-06 17:01:02,361 [CRITICAL] ❌ Missing Environment Variable: Please set your 'OPENROUTER_API_KEY' before running.
+2026-06-06 17:01:09,704 [CRITICAL] ❌ Missing Environment Variable: Please set your 'OPENROUTER_API_KEY' before running.
+2026-06-06 17:02:17,145 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 17:02:43,130 [WARNING] ⚠️ Batch completed but 100% of rows caught inside similarity filters. Re-routing hyper-seeds...
+2026-06-06 17:02:43,892 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 17:03:17,670 [WARNING] ⚠️ Batch completed but 100% of rows caught inside similarity filters. Re-routing hyper-seeds...
+2026-06-06 17:03:18,336 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 17:05:20,032 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 17:05:42,179 [WARNING] ⚠️ No unique rows added from this chunk. Moving to next variation configuration...
+2026-06-06 17:05:43,380 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 17:05:57,083 [ERROR] ❌ Failed parsing batch JSON matrix: Expecting ':' delimiter: line 26 column 648 (char 2083)
+2026-06-06 17:06:01,712 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 17:06:08,407 [WARNING] ⚠️ No unique rows added from this chunk. Moving to next variation configuration...
+2026-06-06 17:06:12,190 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-06 17:06:51,192 [WARNING] ⚠️ No unique rows added from this chunk. Moving to next variation configuration...
+2026-06-06 17:06:55,111 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
