@@ -41,11 +41,14 @@ def split_csv_to_sentences(input_files, output_filename, text_col="text"):
 
     for idx, row in combined.iterrows():
         raw_text = str(row[text_col]).strip()
-        cleaned_text = " ".join(raw_text.split())
-        sentences = nltk.tokenize.sent_tokenize(cleaned_text)
+        
+        # 💡 STEP 1: Split into sentences FIRST while retaining paragraph \n newlines
+        sentences = nltk.tokenize.sent_tokenize(raw_text)
 
         for sentence in sentences:
-            sentence = sentence.strip()
+            # 💡 STEP 2: Clean up inner whitespace on the isolated sentence level instead
+            sentence = " ".join(sentence.split()).strip()
+            
             if len(sentence) > 10:
                 new_row = row.to_dict()
                 new_row[text_col] = sentence
@@ -67,9 +70,8 @@ if __name__ == "__main__":
     INPUT_FILES = [
         "malaysian_economic_new_1_year_1000.csv",
         "malaysian_economic_news_1000_1.csv",
-        "economic_news_1000.csv",
     ]
-    OUTPUT_FILE = "staged_new_economic_sentences.csv"
+    OUTPUT_FILE = "staged_new_economic_sentences_1.csv"
     TEXT_COLUMN = "text"
 
     split_csv_to_sentences(INPUT_FILES, OUTPUT_FILE, text_col=TEXT_COLUMN)
