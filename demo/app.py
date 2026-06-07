@@ -348,7 +348,7 @@ def load_sentiment_models():
         absa_pipe = MockABSAPipe()
         absa_status = f"Mock ABSA aspect sentiment fallback initialized ({str(e_absa)[:50]})"
 
-    return baseline_pipe, absa_pipe, baseline_status, absa_status
+    return baseline_pipe, absa_pipe, baseline_status, absa_status, fine_tuned_path
 
 # Load data helper
 @st.cache_data
@@ -459,10 +459,34 @@ def fetch_github_dataset(repo_url):
     return df, loaded_status
 
 
-# --- INITIALIZE PIPELINES ---
-semantic_model, semantic_info = load_semantic_router()
-domain_classifier, deberta_info = load_deberta_classifier()
-base_sent_pipe, absa_sent_pipe, baseline_info, absa_info = load_sentiment_models()
+# --- INITIALIZE PIPELINES LAZILY ---
+if "semantic_info" not in st.session_state:
+    st.session_state.semantic_info = "Standby (Loads on demand)"
+if "deberta_info" not in st.session_state:
+    st.session_state.deberta_info = "Standby (Loads on demand)"
+if "baseline_info" not in st.session_state:
+    st.session_state.baseline_info = "Standby (Loads on demand)"
+if "absa_info" not in st.session_state:
+    st.session_state.absa_info = "Standby (Loads on demand)"
+if "fine_tuned_path" not in st.session_state:
+    st.session_state.fine_tuned_path = "dummfak/finbert-macroeconomic-absa"
+
+def get_semantic_router():
+    model, info = load_semantic_router()
+    st.session_state.semantic_info = info
+    return model
+
+def get_deberta_classifier():
+    model, info = load_deberta_classifier()
+    st.session_state.deberta_info = info
+    return model
+
+def get_sentiment_models():
+    base_pipe, absa_pipe, base_info, absa_info, fp = load_sentiment_models()
+    st.session_state.baseline_info = base_info
+    st.session_state.absa_info = absa_info
+    st.session_state.fine_tuned_path = fp
+    return base_pipe, absa_pipe
 
 
 # --- SIDEBAR DESIGN ---
@@ -485,10 +509,10 @@ page = st.sidebar.radio(
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("### System Initialization Log")
-st.sidebar.caption(f"**Embedder:** {semantic_info}")
-st.sidebar.caption(f"**Domain:** {deberta_info}")
-st.sidebar.caption(f"**Baseline:** {baseline_info}")
-st.sidebar.caption(f"**ABSA Engine:** {absa_info}")
+st.sidebar.caption(f"**Embedder:** {st.session_state.semantic_info}")
+st.sidebar.caption(f"**Domain:** {st.session_state.deberta_info}")
+st.sidebar.caption(f"**Baseline:** {st.session_state.baseline_info}")
+st.sidebar.caption(f"**ABSA Engine:** {st.session_state.absa_info}")
 
 
 # --- MAIN INTERFACE WORKSPACE ROUTER ---
@@ -514,12 +538,42 @@ if page == "📊 Dataset Explorer":
     else:
         st.success("Successfully established stable streaming with GitHub repository.")
 
+    st.markdown("<div style='margin-bottom: 1rem;'></div>", unsafe_allow_html=True)
+
+    # Performance enhancement: Batch/Slicing options
+    col_batch1, col_batch2 = st.columns([2, 3])
+    with col_batch1:
+        batch_size = st.selectbox(
+            "Analysis & Preview Mode",
+            ["Full Dataset", "Batch (First 100)", "Batch (First 500)", "Batch (First 1000)", "Random Sample (100)", "Random Sample (500)"],
+            index=1,  # Default to first 100 to yield immediate responsiveness on large files!
+            help="Select how many records to analyze and preview to maintain peak browser performance."
+        )
+
+    # Filter/Slice DataFrame based on selection
+    raw_total = len(df)
+    if "First 100" in batch_size:
+        df_active = df.head(100)
+    elif "First 500" in batch_size:
+        df_active = df.head(500)
+    elif "First 1000" in batch_size:
+        df_active = df.head(1000)
+    elif "Random Sample (100)" in batch_size:
+        df_active = df.sample(min(100, raw_total), random_state=42) if raw_total > 100 else df
+    elif "Random Sample (500)" in batch_size:
+        df_active = df.sample(min(500, raw_total), random_state=42) if raw_total > 500 else df
+    else:
+        df_active = df
+
+    if len(df_active) < raw_total:
+         st.info(f"⚡ **Performance Optimization Active:** Analyzing and displaying a chosen batch of **{len(df_active)}** rows out of `{raw_total}` total rows in the dataset.")
+
     st.markdown("<div style='margin-bottom: 1.5rem;'></div>", unsafe_allow_html=True)
 
-    # Statistical footprint calculation
-    total_records = len(df)
-    unique_aspects = df['aspect'].nunique() if 'aspect' in df.columns else 0
-    total_words = df['text'].apply(lambda x: len(str(x).split())).sum() if 'text' in df.columns else 0
+    # Statistical footprint calculation on active batch
+    total_records = len(df_active)
+    unique_aspects = df_active['aspect'].nunique() if 'aspect' in df_active.columns else 0
+    total_words = df_active['text'].apply(lambda x: len(str(x).split())).sum() if 'text' in df_active.columns else 0
     estimated_tokens = int(total_words * 1.3)
 
     # Beautiful minimalist metric row
@@ -555,8 +609,8 @@ if page == "📊 Dataset Explorer":
 
     # Aspect distribution bars
     st.markdown("<div style='margin-top: 1.5rem; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.8rem;'>Macro Aspect Coverage Frequency</div>", unsafe_allow_html=True)
-    if 'aspect' in df.columns:
-        aspect_counts = df['aspect'].value_counts()
+    if 'aspect' in df_active.columns:
+        aspect_counts = df_active['aspect'].value_counts()
         # fill in missing aspects from MACRO_ASPECTS for a clean chart
         for asp in MACRO_ASPECTS:
             if asp not in aspect_counts.index:
@@ -567,13 +621,17 @@ if page == "📊 Dataset Explorer":
         st.info("No aspect distribution matrix resolved.")
 
     st.markdown("<div style='margin-top: 2rem; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.8rem;'>Pristine Raw Data Window</div>", unsafe_allow_html=True)
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(df_active, use_container_width=True)
 
 
 elif page == "🎯 Semantic Aspect Classification":
     st.markdown("<h2 style='font-weight:700; letter-spacing:-0.03em; margin-bottom:0.5rem;'>Semantic Aspect Classification</h2>", unsafe_allow_html=True)
     st.markdown("<p style='font-size:0.95rem; opacity:0.8;'>Determine which core macroeconomic aspects are active within any given sentence using a direct comparison between general semantic similarities and fine-tuned predictive class indicators.</p>", unsafe_allow_html=True)
     st.divider()
+
+    # Lazily boot/load models
+    semantic_model = get_semantic_router()
+    domain_classifier = get_deberta_classifier()
 
     user_sentence = st.text_area(
         "Economic Sentence to Analyze",
@@ -656,6 +714,9 @@ elif page == "⚖️ Aspect Sentiment Scoring":
     st.markdown("<p style='font-size:0.95rem; opacity:0.8;'>Compare raw text sentiment evaluated by global generic models directly with fine-tuned targeted ABSA sentiment paired explicitly against a target macro aspect context.</p>", unsafe_allow_html=True)
     st.divider()
 
+    # Lazily boot/load models
+    base_sent_pipe, absa_sent_pipe = get_sentiment_models()
+
     # Pair structure setup
     col_inp1, col_inp2 = st.columns([5, 3])
     with col_inp1:
@@ -694,7 +755,7 @@ elif page == "⚖️ Aspect Sentiment Scoring":
 
     with col_right:
         st.markdown("<div style='font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;'>Fine-Tuned ABSA Sentiment</div>", unsafe_allow_html=True)
-        st.caption(f"Contextualized model evaluated on sentence + aspect pairing: `{fine_tuned_path}` with active Aspect: **`{target_aspect}`**.")
+        st.caption(f"Contextualized model evaluated on sentence + aspect pairing: `{st.session_state.fine_tuned_path}` with active Aspect: **`{target_aspect}`**.")
         st.divider()
 
         try:
@@ -723,6 +784,10 @@ elif page == "🚀 Document Parsing Engine":
     st.markdown("<h2 style='font-weight:700; letter-spacing:-0.03em; margin-bottom:0.5rem;'>Document Parsing Engine</h2>", unsafe_allow_html=True)
     st.markdown("<p style='font-size:0.95rem; opacity:0.8;'>Paste multi-paragraph macroeconomic reports to parse and evaluate sentences. Discover underlying target aspects interactively without generic tables.</p>", unsafe_allow_html=True)
     st.divider()
+
+    # Lazily boot/load models
+    domain_classifier = get_deberta_classifier()
+    base_sent_pipe, absa_sent_pipe = get_sentiment_models()
 
     # Store parsed results inside session_state to support smooth master-detail selections
     if "doc_parsed_list" not in st.session_state:
