@@ -1,6 +1,0 @@
-{
-  "name": "Aspect ABSA Dashboard",
-  "description": "A sleek, minimalist Aspect-Based Sentiment Analysis (ABSA) dashboard for macroeconomic text analysis and comparison.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
